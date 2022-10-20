@@ -8,11 +8,12 @@ session_start();
         //something was posted
         $user_name = $_POST['user_name'];
         $password = $_POST['password'];
+        $Serial_number = $_POST['serial_number'];
 
-        if(!empty($user_name) && !empty($password) && !is_numeric($user_name)){
+        if(!empty($user_name) && !empty($password) && !empty($Serial_number) &&  !is_numeric($user_name)){
             //save to database
             $user_id = random_num(10);
-            $query = "insert into users (user_id,user_name,password) values ('$user_id','$user_name','$password')";
+            $query = "insert into users (user_id,user_name,password,serial_number) values ('$user_id','$user_name','$password','$Serial_number')";
             mysqli_query($con, $query);
             //redirects user to login page
             header("Location: login.php");
@@ -91,9 +92,13 @@ session_start();
             <input id="text" type="password" placeholder="Password" name="password" required>
             <br>
             <br>
+            <input id="text" type="text" placeholder="Serial Number" name="serial_number" required>
+            <br>
+            <br>
             <input id="button" type="submit" value="Sign Up">
             <br>
             <br>
+           
             <!--allows to go to the signup page-->
             <a href="login.php" style="color: white;">Already have an account?</a><br><br>
         </form>

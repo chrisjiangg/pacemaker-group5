@@ -13,7 +13,20 @@ session_start();
     <title>Date and Time</title>
 </head>
 <body>
-    <h1>Date and Time</h1>
+    <style type="text/css">
+    body {
+        background: linear-gradient(to right, white, #7A003C, #56002a);
+    }
+    </style>
+    <h2>Current Date and Time</h2>
+    <?php
+    date_default_timezone_set("America/New_York");
+    echo "Current Date: " . date("Y-m-d");
+    echo "<br>";
+    echo "Current Time: " . date("h:i:sa");
+    echo "<br>";
+    ?>
+    <h2>Change Date and Time</h2>
     <form method="post">
         <input type="number" name="hour" placeholder="Hour (24 hour clock)" required>
         <br>
@@ -33,7 +46,7 @@ session_start();
         <input type="number" name="year" placeholder="Year" required>
         <br>
         <br>
-        <input id="button" type="submit" value="Sign Up">
+        <input type="submit">
         <br>
         <br>
     </form>
@@ -46,11 +59,8 @@ session_start();
         $month = $_POST["month"];
         $day = $_POST["day"];
         $year = $_POST["year"];
-        date_default_timezone_set("America/New_York");
-        echo "The current time is " . date("h:i:sa");
-        echo "<br>";
-        $d=mktime( $hour, $minute, $second, $month, $day, $year);
-        echo "Changed date is " . date("Y-m-d h:i:sa", $d);
+        $datetime=mktime( $hour, $minute, $second, $month, $day, $year);
+        echo "Changed Date and Time: " . date("Y-m-d h:i:sa", $datetime);
         echo "<br>";
     }
     ?>
