@@ -4,8 +4,18 @@ session_start();
 ?>
 
 <!DOCTYPE html>
-<html>
+<!--Sets Language-->
+<html lang="en">
 <head>
+    <!--Specifies the character encoding-->
+    <!--UTF-8 covers most of the characters and symbols-->
+    <meta charset="UTF-8">
+    <!--http-equiv provides an HTTP header for the value of the content attribute and content specifies the value associated with the http-equiv or name attribute-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--Specifies a name for the metadata-->
+    <!--Sets the viewport and makes it look good on all devices-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Name of the tab-->
     <title>Welcome</title>
 </head>
 <body>
