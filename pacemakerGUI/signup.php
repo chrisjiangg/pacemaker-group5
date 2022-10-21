@@ -9,15 +9,23 @@ session_start();
         $user_name = $_POST['user_name'];
         $password = $_POST['password'];
         $Serial_number = $_POST['serial_number'];
-
+        $sql = "SELECT * from users";
+        if($result = mysqli_query($con,$sql)){
+            $usercount=mysqli_num_rows($result);
+        }
         if(!empty($user_name) && !empty($password) && !empty($Serial_number) &&  !is_numeric($user_name)){
-            //save to database
-            $user_id = random_num(10);
-            $query = "insert into users (user_id,user_name,password,serial_number) values ('$user_id','$user_name','$password','$Serial_number')";
-            mysqli_query($con, $query);
-            //redirects user to login page
-            header("Location: login.php");
-            die;
+            if($usercount<10){
+                //save to database
+                $user_id = random_num(10);
+                $query = "insert into users (user_id,user_name,password,serial_number) values ('$user_id','$user_name','$password','$Serial_number')";
+                mysqli_query($con, $query);
+                //redirects user to login page
+                header("Location: login.php");
+                die;
+            }
+            else{
+                echo '<script>alert("Maximum of 10 Users Reached!")</script>';
+            }
         }
     }
 
@@ -37,8 +45,6 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--Name of the tab-->
     <title>Sign Up</title>
-    <!--Add font-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
 </head>
 <body>
     <style type="text/css">

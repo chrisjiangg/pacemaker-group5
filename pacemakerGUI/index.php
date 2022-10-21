@@ -23,6 +23,26 @@ session_start();
     <br>
     Serial Number: <?php echo $user_data['Serial_number']; ?>
     <br>
+    <h2>Serial Number</h2>
+    <form method="post">
+        <input id="text" type="text" placeholder="Serial Number" name="serial_number" required>
+        <input type="submit">
+    </form>
+    <?php
+    if($_SERVER['REQUEST_METHOD'] == "POST"){
+        //something was posted stored into variables
+        $serial_number = $_POST["serial_number"];
+        if($serial_number==$user_data['Serial_number']){
+            echo "<br>";
+            echo "Pacemaker connected successfully!";
+        }
+        else{
+            echo "<br>";
+            echo "Pacemaker is not attached to this user!";
+        }
+        
+    }
+    ?>
     <h2>Pacemaker Modes</h2>
     <a href="AOO.php"><button>AOO</button></a>
     <br>
