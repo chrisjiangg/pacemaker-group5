@@ -44,11 +44,11 @@ session_start();
         $serial_number = $_POST["serial_number"];
         if($serial_number==$user_data['Serial_number']){
             echo "<br>";
-            echo "Pacemaker connected successfully!";
+            echo "Pacemaker with serial number ".$serial_number." connected successfully!";
         }
         else{
             echo "<br>";
-            echo "Pacemaker is not attached to this user!";
+            echo "Pacemaker with serial number ".$serial_number." is not attached to this user!";
         }
         
     }
