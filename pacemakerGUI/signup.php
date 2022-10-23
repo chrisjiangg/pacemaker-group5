@@ -9,11 +9,13 @@ session_start();
         $user_name = $_POST['user_name'];
         $password = $_POST['password'];
         $Serial_number = $_POST['serial_number'];
+        //counts how many users there are in database
         $sql = "SELECT * from users";
         if($result = mysqli_query($con,$sql)){
             $usercount=mysqli_num_rows($result);
         }
         if(!empty($user_name) && !empty($password) && !empty($Serial_number) &&  !is_numeric($user_name)){
+            //allows only a max of 10 users to be stored in the database
             if($usercount<10){
                 //save to database
                 $user_id = random_num(10);
@@ -47,6 +49,7 @@ session_start();
     <title>Sign Up</title>
 </head>
 <body>
+    <!-- css styling -->
     <style type="text/css">
     body{
         background-image: url(./background1.jpg);
@@ -88,6 +91,7 @@ session_start();
         z-index: 2;
     }
     </style>
+    <!-- create user form -->
     <div id="box">
         <form method="post">
         <div style="font-size: 25px;margin: 10px;color: white;"><strong>Create Account</strong></div>

@@ -50,6 +50,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     <title>Login</title>
 </head>
 <body>
+    <!-- css styling -->
     <style type="text/css">
     body{
         background-image: url(./background1.jpg);
@@ -91,6 +92,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     }
     </style>
     <div id="box">
+        <!-- login form -->
         <form method="post">
             <div style="font-size: 25px;margin: 10px;color: white;"><strong>Login</strong></div>
 

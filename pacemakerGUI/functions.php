@@ -1,5 +1,5 @@
 <?php
-
+//checks if user is logged in
 function check_login($con){
     //check if theres user_id in session
     if(isset($_SESSION['user_id'])){
@@ -18,9 +18,7 @@ function check_login($con){
     header("Location: login.php");
     die;
 }
-
-
-
+//creates unique user id for each user
 function random_num($length){
     $text="";
     if($length <5){

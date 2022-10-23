@@ -1,5 +1,5 @@
 <?php
-
+//connects to database
 $dbhost = "localhost";
 $dbuser = "root";
 $dbpass = "";

@@ -29,32 +29,25 @@ session_start();
         background: linear-gradient(to right, white, #7A003C, #56002a);
     }
     </style>
-    <h1>Welcome!</h1>
-    Hello, <?php echo $user_data['user_name'];?>!
     <br>
-    <!-- serial number form -->
-    <h2>Serial Number</h2>
-    <form method="post">
-        <input id="text" type="text" placeholder="Serial Number" name="serial_number" required>
-        <input type="submit">
-    </form>
-    <?php
-    if($_SERVER['REQUEST_METHOD'] == "POST"){
-        //something was posted stored into variables
-        $serial_number = $_POST["serial_number"];
-        //goes to index2.php when the serial number entered matches the one in the database
-        if($serial_number==$user_data['Serial_number']){
-            header("Location: index2.php");
-            die;
-        }
-        else{
-            echo "<br>";
-            echo "Pacemaker with serial number ".$serial_number." is not attached to this user!";
-            echo "<br>";
-            echo "Please enter the correct serial number that is attached to the user ".$user_data['user_name']."!";
-        }
-    }
-    ?>
-    
+    <strong>Connection:</strong> <?php echo "Pacemaker with serial number ".$user_data['Serial_number']." successfully connected!"; ?>
+    <!-- mode buttons -->
+    <h2>Pacemaker Modes</h2>
+    <a href="AOO.php"><button>AOO</button></a>
+    <br>
+    <br>
+    <a href="VOO.php"><button>VOO</button></a>
+    <br>
+    <br>
+    <a href="AAI.php"><button>AAI</button></a>
+    <br>
+    <br>
+    <a href="VVI.php"><button>VVI</button></a>
+    <br>
+    <h2>Date and Time</h2>
+    <a href="DateTime.php"><button>Edit</button></a>
+    <br>
+    <br>
+    <a href="logout.php">Logout</a>
 </body>
 </html>

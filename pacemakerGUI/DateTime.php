@@ -23,6 +23,7 @@ session_start();
     <title>Date and Time</title>
 </head>
 <body>
+    <!-- css styling -->
     <style type="text/css">
     body {
         background: linear-gradient(to right, white, #7A003C, #56002a);
@@ -30,6 +31,7 @@ session_start();
     </style>
     <h2>Current Date and Time</h2>
     <?php
+    //displays current date and time
     date_default_timezone_set("America/New_York");
     echo "Current Date: " . date("Y-m-d");
     echo "<br>";
@@ -37,6 +39,7 @@ session_start();
     echo "<br>";
     ?>
     <h2>Change Date and Time</h2>
+    <!-- form to change the date and time -->
     <form method="post">
         <input type="number" name="hour" placeholder="Hour (24 hour clock)" required>
         <br>
@@ -62,13 +65,14 @@ session_start();
     </form>
     <?php
     if($_SERVER['REQUEST_METHOD'] == "POST"){
-        //something was posted
+        //something was posted and stores user input into variables
         $hour = $_POST["hour"];
         $minute = $_POST["minute"];
         $second = $_POST["second"];
         $month = $_POST["month"];
         $day = $_POST["day"];
         $year = $_POST["year"];
+        //displays inputed date and time
         $datetime=mktime( $hour, $minute, $second, $month, $day, $year);
         echo "Changed Date and Time: " . date("Y-m-d h:i:sa", $datetime);
         echo "<br>";
