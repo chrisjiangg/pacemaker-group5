@@ -7,3 +7,5 @@ TO RUN CODE
 4. Create a new database in PHPmyadmin. (if database named different make sure it's changed in the source code)
 ![image](https://user-images.githubusercontent.com/90339104/197439613-37347617-3b36-46f1-a1c6-8f455079bfa2.png)
 5. To run the code paste the link into your browser (http://localhost/pacemakerGUI/welcome.php)
+
+If you have any questions or issues running the code you can reach out to this email (jiangc46@mcmaster.ca)
