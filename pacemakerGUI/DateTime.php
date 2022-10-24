@@ -79,7 +79,7 @@ session_start();
     }
     ?>
     <br>
-    <a href="index.php"><button>Go Back</button></a>
+    <a href="index2.php"><button>Go Back</button></a>
     <br>
     <br>
     <a href="logout.php">Logout</a>
