@@ -31,17 +31,17 @@ session_start();
     }
     </style>
     <h1>VVI</h1>
-    <h2>Default Parameters</h2>
+    <h2>Current Parameters</h2>
     <?php
-        //values stored into variables rom heart view
-        $lower_rate_limit = 1;
-        $upper_rate_limit = 1;
-        $ventricular_amplitude = 1;
-        $ventricular_pulse_width = 1;
-        $ventricular_sensitivity = 1;
-        $vrp = 1;
-        $hysteresis = 1;
-        $rate_smoothing = 1;
+        //gets user data
+        $lower_rate_limit = $user_data['lower_rate_limit'];
+        $upper_rate_limit = $user_data['upper_rate_limit'];
+        $ventricular_amplitude = $user_data['ventrical_amplitude'];
+        $ventricular_pulse_width = $user_data['ventrical_pulse_width'];
+        $ventricular_sensitivity = $user_data['ventrical_sensitivity'];
+        $vrp = $user_data['vrp'];
+        $hysteresis = $user_data['hysteresis'];
+        $rate_smoothing = $user_data['rate_smoothing'];
         //printing out values to the screen
         echo "Lower Rate Limit: " . $lower_rate_limit;
         echo "<br>";
@@ -66,7 +66,7 @@ session_start();
             Lower Rate Limit (ppm): <input type="range" name="lower_rate_limit" placeholder="Lower Rate Limit" min = "30" max = "175" step= "1" value="30" oninput="rangeValue.innerText = this.value" required>
             <br>
             <p id="rangeValue">30</p>  
-            Upper Rate Limit (ppm): <input type="range" name="upper_rate_limit" placeholder="Upper Rate Limit" min = "50.0" max = "175.0" step= "5" value="50" oninput="rangeValue1.innerText = this.value" required>
+            Upper Rate Limit (ppm): <input type="range" name="upper_rate_limit" placeholder="Upper Rate Limit" min = "50" max = "175" step= "5" value="50" oninput="rangeValue1.innerText = this.value" required>
             <br>
             <p id="rangeValue1">50</p>  
             Ventricular Amplitude (V): <input type="range" name="ventricular_amplitude" placeholder="Ventricular Amplitude" min= "0" max = "7" step= "0.1" value="0" oninput="rangeValue2.innerText = this.value" required>
@@ -91,7 +91,7 @@ session_start();
             <br>
             <br>
         </form>
-    <h2>Current Parameters</h2>
+    <h2>Changed Parameters</h2>
     <?php
     if($_SERVER['REQUEST_METHOD'] == "POST"){
         //something was posted stored into variables
@@ -103,6 +103,13 @@ session_start();
         $vrp = $_POST["vrp"];
         $hysteresis = $_POST["hysteresis"];
         $rate_smoothing = $_POST["rate_smoothing"];
+        $serial = $_SESSION["serial"];
+        $zero = 0;
+        
+        $query = "UPDATE users SET lower_rate_limit='$lower_rate_limit', upper_rate_limit='$upper_rate_limit', atrial_amplitude='$zero', atrial_pulse_width='$zero', atrial_sensitivity='$zero', ventrical_amplitude='$ventricular_amplitude', ventrical_pulse_width='$ventricular_pulse_width', ventrical_sensitivity='$ventricular_sensitivity', arp='$zero', vrp='$vrp', pvarp='$zero', hysteresis='$hysteresis', rate_smoothing='$rate_smoothing' WHERE Serial_number='$serial'";
+        
+        mysqli_query($con, $query);
+
         //printing out values to the screen
         echo "Lower Rate Limit: " . $lower_rate_limit;
         echo "<br>";

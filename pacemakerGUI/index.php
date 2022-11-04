@@ -42,6 +42,8 @@ session_start();
     if($_SERVER['REQUEST_METHOD'] == "POST"){
         //something was posted stored into variables
         $serial_number = $_POST["serial_number"];
+        $_SESSION["serial"]=$serial_number;
+        // echo $_SESSION["serial"];
         //goes to index2.php when the serial number entered matches the one in the database
         if($serial_number==$user_data['Serial_number']){
             header("Location: index2.php");

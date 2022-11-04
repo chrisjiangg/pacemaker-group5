@@ -30,13 +30,13 @@ session_start();
     }
     </style>
     <h1>VOO</h1>
-    <h2>Default Parameters</h2>
+    <h2>Current Parameters</h2>
     <?php
-        //values stored into variables rom heart view
-        $lower_rate_limit = 1;
-        $upper_rate_limit = 1;
-        $ventricular_amplitude = 1;
-        $ventricular_pulse_width = 1;
+        //gets user data
+        $lower_rate_limit = $user_data['lower_rate_limit'];
+        $upper_rate_limit = $user_data['upper_rate_limit'];
+        $ventricular_amplitude = $user_data['ventrical_amplitude'];
+        $ventricular_pulse_width =  $user_data['ventrical_pulse_width'];
         //printing out values to the screen
         echo "Lower Rate Limit: " . $lower_rate_limit;
         echo "<br>";
@@ -65,7 +65,7 @@ session_start();
             <br>
             <br>
         </form>
-    <h2>Current Parameters</h2>
+    <h2>Changed Parameters</h2>
     <?php
     if($_SERVER['REQUEST_METHOD'] == "POST"){
         //something was posted stored into variables
@@ -73,6 +73,12 @@ session_start();
         $upper_rate_limit = $_POST["upper_rate_limit"];
         $ventricular_amplitude = $_POST["ventricular_amplitude"];
         $ventricular_pulse_width = $_POST["ventricular_pulse_width"];
+        $serial = $_SESSION["serial"];
+        $zero = 0;
+        
+        $query = "UPDATE users SET lower_rate_limit='$lower_rate_limit', upper_rate_limit='$upper_rate_limit', atrial_amplitude='$zero', atrial_pulse_width='$zero', atrial_sensitivity='$zero', ventrical_amplitude='$ventricular_amplitude', ventrical_pulse_width='$ventricular_pulse_width', ventrical_sensitivity='$zero', arp='$zero', vrp='$zero', pvarp='$zero', hysteresis='$zero', rate_smoothing='$zero' WHERE Serial_number='$serial'";
+        
+        mysqli_query($con, $query);
         //printing out values to the screen
         echo "Lower Rate Limit: " . $lower_rate_limit;
         echo "<br>";
