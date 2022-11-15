@@ -14,9 +14,14 @@ session_start();
         if($result = mysqli_query($con,$sql)){
             $usercount=mysqli_num_rows($result);
         }
+
+        $existSql = "SELECT * FROM `users` WHERE user_name = '$user_name'";
+        $result = mysqli_query($con, $existSql);
+        $numExistRows = mysqli_num_rows($result);
+        
         if(!empty($user_name) && !empty($password) && !empty($Serial_number) &&  !is_numeric($user_name)){
             //allows only a max of 10 users to be stored in the database
-            if($usercount<10){
+            if($usercount<10 && $numExistRows == 0){
                 //save to database
                 $user_id = random_num(10);
                 $query = "insert into users (user_id,user_name,password,serial_number) values ('$user_id','$user_name','$password','$Serial_number')";
@@ -25,8 +30,15 @@ session_start();
                 header("Location: login.php");
                 die;
             }
+
             else{
-                echo '<script>alert("Maximum of 10 Users Reached!")</script>';
+            
+            if ($numExistRows>0 && $usercount <10 ){
+                echo '<script>alert("Username Already exists!")</script>';
+            }
+            else{
+                echo '<script>alert("User has reached limit!")</script>';}
+
             }
         }
     }
