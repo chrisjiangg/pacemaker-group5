@@ -18,10 +18,14 @@ session_start();
         $existSql = "SELECT * FROM `users` WHERE user_name = '$user_name'";
         $result = mysqli_query($con, $existSql);
         $numExistRows = mysqli_num_rows($result);
+
+        $exist_serial_Sql = "SELECT * FROM `users` WHERE Serial_number = '$Serial_number'";
+        $result_2 = mysqli_query($con, $exist_serial_Sql);
+        $numExistRows2 = mysqli_num_rows($result_2);
         
         if(!empty($user_name) && !empty($password) && !empty($Serial_number) &&  !is_numeric($user_name)){
             //allows only a max of 10 users to be stored in the database
-            if($usercount<10 && $numExistRows == 0){
+            if($usercount<10 && $numExistRows == 0 && $numExistRows2 == 0){
                 //save to database
                 $user_id = random_num(10);
                 $query = "insert into users (user_id,user_name,password,serial_number) values ('$user_id','$user_name','$password','$Serial_number')";
@@ -35,6 +39,9 @@ session_start();
             
             if ($numExistRows>0 && $usercount <10 ){
                 echo '<script>alert("Username Already exists!")</script>';
+            }
+            elseif($numExistRows2>0 && $usercount <10){
+                echo '<script>alert("Serial Number already exists!")</script>';
             }
             else{
                 echo '<script>alert("User has reached limit!")</script>';}
