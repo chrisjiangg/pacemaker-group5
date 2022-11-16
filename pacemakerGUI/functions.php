@@ -31,4 +31,10 @@ function random_num($length){
     }
     return $text;
 }
+//checks if local machine is little endian
+function isLittleEndian() {
+    $testint = 0x00FF;
+    $p = pack('S', $testint);
+    return $testint===current(unpack('v', $p));
+}
 ?>
