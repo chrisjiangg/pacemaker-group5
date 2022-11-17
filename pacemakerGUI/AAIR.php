@@ -90,7 +90,7 @@ session_start();
             Upper Rate Limit (ppm): <input type="range" name="upper_rate_limit" placeholder="Upper Rate Limit" min = "50" max = "175" step= "5" value="50" oninput="rangeValue1.innerText = this.value" required>
             <br>
             <p id="rangeValue1">50</p> 
-            Maximum Sensor Rate (ppm): <input type="range" name="upper_rate_limit" placeholder="Upper Rate Limit" min = "50" max = "175" step= "5" value="50" oninput="rangeValue2.innerText = this.value" required>
+            Maximum Sensor Rate (ppm): <input type="range" name="maximum_sensor_rate" placeholder="Maximum Sensor Rate" min = "50" max = "175" step= "5" value="50" oninput="rangeValue2.innerText = this.value" required>
             <br>
             <p id="rangeValue2">50</p> 
             Atrial Amplitude (V): <input type="range" name="atrial_amplitude" placeholder="Atrial Amplitude" min= "0" max = "7" step= "0.1" value="0" oninput="rangeValue3.innerText = this.value" required>
@@ -123,7 +123,7 @@ session_start();
             Response Factor: <input type="range" name="response_factor" placeholder= "Response Factor" min="1" max="16" step="1" value="1" oninput="rangeValue12.innerText = this.value" required>
             <br>
             <p id="rangeValue12">1</p>
-            Recovery Time (min): <input type="range" name="recover_time" placeholder= "Recovery Time" min="2" max="16" step="1" value="2" oninput="rangeValue13.innerText = this.value" required>
+            Recovery Time (min): <input type="range" name="recovery_time" placeholder= "Recovery Time" min="2" max="16" step="1" value="2" oninput="rangeValue13.innerText = this.value" required>
             <br>
             <p id="rangeValue13">2</p>
             <input type="submit">
@@ -152,7 +152,7 @@ session_start();
         $zero = 0;
 
         if($upper_rate_limit>$lower_rate_limit){
-        $query = "UPDATE users SET lower_rate_limit='$lower_rate_limit', upper_rate_limit='$upper_rate_limit', maximum_rate_sensor='$maximum_sensor_rate', atrial_amplitude='$atrial_amplitude', atrial_pulse_width='$atrial_pulse_width', atrial_sensitivity='$atrial_sensitivity', ventrical_amplitude='$zero', ventrical_pulse_width='$zero', ventrical_sensitivity='$zero', arp='$arp', vrp='$zero', pvarp='$pvarp', hysteresis='$hysteresis', rate_smoothing='$rate_smoothing', activity_threshold='$activity_threshold', reaction_time='$reaction_time', response_factor='$response_factor', recovery_time='$recovery_time' WHERE Serial_number='$serial'";
+        $query = "UPDATE users SET lower_rate_limit='$lower_rate_limit', upper_rate_limit='$upper_rate_limit', maximum_sensor_rate='$maximum_sensor_rate', atrial_amplitude='$atrial_amplitude', atrial_pulse_width='$atrial_pulse_width', atrial_sensitivity='$atrial_sensitivity', ventrical_amplitude='$zero', ventrical_pulse_width='$zero', ventrical_sensitivity='$zero', arp='$arp', vrp='$zero', pvarp='$pvarp', hysteresis='$hysteresis', rate_smoothing='$rate_smoothing', activity_threshold='$activity_threshold', reaction_time='$reaction_time', response_factor='$response_factor', recovery_time='$recovery_time' WHERE Serial_number='$serial'";
         
         mysqli_query($con, $query);
 

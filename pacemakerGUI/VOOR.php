@@ -39,11 +39,11 @@ session_start();
         $ventricular_amplitude = $user_data['ventrical_amplitude'];
         $ventricular_pulse_width = $user_data['ventrical_pulse_width'];
         $ventricular_sensitivity = $user_data['ventrical_sensitivity'];
-        $maximum_sensor_rate = $_POST["maximum_sensor_rate"];
-        $reaction_time = $_POST["reaction_time"];
-        $response_factor = $_POST["response_factor"];
-        $activity_threshold = $_POST["activity_threshold"];
-        $recovery_time = $_POST["recovery_time"];
+        $maximum_sensor_rate = $user_data["maximum_sensor_rate"];
+        $reaction_time = $user_data["reaction_time"];
+        $response_factor = $user_data["response_factor"];
+        $activity_threshold = $user_data["activity_threshold"];
+        $recovery_time = $user_data["recovery_time"];
         $vrp = $user_data['vrp'];
         $hysteresis = $user_data['hysteresis'];
         $rate_smoothing = $user_data['rate_smoothing'];
@@ -58,7 +58,7 @@ session_start();
         echo "<br>";
         echo "Atrial Sensitivity: " . $ventricular_sensitivity;
         echo "<br>";
-        echo "ARP: " . $vrp;
+        echo "VRP: " . $vrp;
         echo "<br>";
         echo "Hysteresis: " . $hysteresis;
         echo "<br>";
@@ -148,7 +148,7 @@ session_start();
 
         if($upper_rate_limit>$lower_rate_limit){
         
-        $query = "UPDATE users SET lower_rate_limit='$lower_rate_limit', upper_rate_limit='$upper_rate_limit', maximum_rate_sensor='$maximum_sensor_rate', atrial_amplitude='$zero', atrial_pulse_width='$zero', atrial_sensitivity='$zero', ventrical_amplitude='$ventrical_amplitude', ventrical_pulse_width='$ventrical_pulse_width', ventrical_sensitivity='$ventrical_sensitivity', arp='$zero', vrp='$vrp', pvarp='$pvarp', hysteresis='$hysteresis', rate_smoothing='$rate_smoothing', activity_threshold='$activity_threshold', reaction_time='$reaction_time', response_factor='$response_factor', recovery_time='$recovery_time' WHERE Serial_number='$serial'";
+        $query = "UPDATE users SET lower_rate_limit='$lower_rate_limit', upper_rate_limit='$upper_rate_limit', maximum_sensor_rate='$maximum_sensor_rate', atrial_amplitude='$zero', atrial_pulse_width='$zero', atrial_sensitivity='$zero', ventrical_amplitude='$ventricular_amplitude', ventrical_pulse_width='$ventricular_pulse_width', ventrical_sensitivity='$ventricular_sensitivity', arp='$zero', vrp='$zero', pvarp='$zero', hysteresis='$hysteresis', rate_smoothing='$zero', activity_threshold='$activity_threshold', reaction_time='$reaction_time', response_factor='$response_factor', recovery_time='$recovery_time' WHERE Serial_number='$serial'";
         mysqli_query($con, $query);
 
         //printing out values to the screen
