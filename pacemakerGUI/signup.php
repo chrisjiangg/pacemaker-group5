@@ -7,8 +7,8 @@ session_start();
     if($_SERVER['REQUEST_METHOD'] == "POST"){
         //something was posted
         $user_name = trim($_POST['user_name']);
-        $password = $_POST['password'];
-        $Serial_number = $_POST['serial_number'];
+        $password = trim($_POST['password']);
+        $Serial_number = trim($_POST['serial_number']);
         //counts how many users there are in database
         $sql = "SELECT * from users";
         if($result = mysqli_query($con,$sql)){
@@ -25,7 +25,7 @@ session_start();
         
         if(!empty($user_name) && !empty($password) && !empty($Serial_number) &&  !is_numeric($user_name)){
             //allows only a max of 10 users to be stored in the database
-            if($usercount<10 && $numExistRows == 0 && $numExistRows2 == 0 && preg_match("/^[a-zA-Z0-9]{5,}$/", $user_name)){
+            if($usercount<10 && $numExistRows == 0 && $numExistRows2 == 0 && preg_match("/^[a-zA-Z!-?]{1,}$/", $user_name)&& preg_match("/^[a-zA-Z!-?]{1,}$/", $password)&& preg_match("/^[a-zA-Z!-?]{1,}$/", $Serial_number)){
                 //save to database
                 $user_id = random_num(10);
                 $query = "insert into users (user_id,user_name,password,serial_number) values ('$user_id','$user_name','$password','$Serial_number')";
@@ -43,8 +43,14 @@ session_start();
             elseif($numExistRows2>0 && $usercount <10){
                 echo '<script>alert("Serial Number already exists!")</script>';
             }
-            elseif(!preg_match("/^[a-zA-Z0-9]{5,}$/", $user_name)){
+            elseif(!preg_match("/^[a-zA-Z!-?]{1,}$/", $user_name)){
                 echo '<script>alert("Username can not have spaces!")</script>';
+            }
+            elseif(!preg_match("/^[a-zA-Z!-?]{1,}$/", $password)){
+                echo '<script>alert("password can not have spaces!")</script>';
+            }
+            elseif(!preg_match("/^[a-zA-Z!-?]{1,}$/", $Serial_number)){
+                echo '<script>alert("Serial number can not have spaces!")</script>';
             }
             else{
                 echo '<script>alert("User has reached limit!")</script>';}
