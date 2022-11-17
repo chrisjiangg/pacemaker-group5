@@ -56,7 +56,6 @@ session_start();
     <br>
     <a href="VVIR.php"><button>VVIR</button></a>
     <br>
-    <br>
     <h2>Date and Time</h2>
     <a href="DateTime.php"><button>Edit</button></a>
     <br>
