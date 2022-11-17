@@ -6,7 +6,7 @@ session_start();
 
     if($_SERVER['REQUEST_METHOD'] == "POST"){
         //something was posted
-        $user_name = $_POST['user_name'];
+        $user_name = trim($_POST['user_name']);
         $password = $_POST['password'];
         $Serial_number = $_POST['serial_number'];
         //counts how many users there are in database
@@ -25,7 +25,7 @@ session_start();
         
         if(!empty($user_name) && !empty($password) && !empty($Serial_number) &&  !is_numeric($user_name)){
             //allows only a max of 10 users to be stored in the database
-            if($usercount<10 && $numExistRows == 0 && $numExistRows2 == 0){
+            if($usercount<10 && $numExistRows == 0 && $numExistRows2 == 0 && preg_match("/^[a-zA-Z0-9]{5,}$/", $user_name)){
                 //save to database
                 $user_id = random_num(10);
                 $query = "insert into users (user_id,user_name,password,serial_number) values ('$user_id','$user_name','$password','$Serial_number')";
@@ -36,12 +36,15 @@ session_start();
             }
 
             else{
-            
+
             if ($numExistRows>0 && $usercount <10 ){
                 echo '<script>alert("Username Already exists!")</script>';
             }
             elseif($numExistRows2>0 && $usercount <10){
                 echo '<script>alert("Serial Number already exists!")</script>';
+            }
+            elseif(!preg_match("/^[a-zA-Z0-9]{5,}$/", $user_name)){
+                echo '<script>alert("Username can not have spaces!")</script>';
             }
             else{
                 echo '<script>alert("User has reached limit!")</script>';}
