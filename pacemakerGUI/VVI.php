@@ -105,6 +105,8 @@ session_start();
         $rate_smoothing = $_POST["rate_smoothing"];
         $serial = $_SESSION["serial"];
         $zero = 0;
+
+        if($upper_rate_limit>$lower_rate_limit){
         
         $query = "UPDATE users SET lower_rate_limit='$lower_rate_limit', upper_rate_limit='$upper_rate_limit', atrial_amplitude='$zero', atrial_pulse_width='$zero', atrial_sensitivity='$zero', ventrical_amplitude='$ventricular_amplitude', ventrical_pulse_width='$ventricular_pulse_width', ventrical_sensitivity='$ventricular_sensitivity', arp='$zero', vrp='$vrp', pvarp='$zero', hysteresis='$hysteresis', rate_smoothing='$rate_smoothing' WHERE Serial_number='$serial'";
         
@@ -126,7 +128,9 @@ session_start();
         echo "Hysteresis: " . $hysteresis;
         echo "<br>";
         echo "Rate Smoothing: " . $rate_smoothing;
-        echo "<br>";
+        echo "<br>";}
+
+        else{echo '<script>alert("lower limit can not exceed upper limit!")</script>'; }
     }
     ?>
     <br>

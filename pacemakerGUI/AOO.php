@@ -78,6 +78,7 @@ session_start();
         $serial = $_SESSION["serial"];
         $zero = 0;
         
+        if ($lower_rate_limit < $upper_rate_limit){
         $query = "UPDATE users SET lower_rate_limit='$lower_rate_limit', upper_rate_limit='$upper_rate_limit', atrial_amplitude='$atrial_amplitude', atrial_pulse_width='$atrial_pulse_width', atrial_sensitivity='$zero', ventrical_amplitude='$zero', ventrical_pulse_width='$zero', ventrical_sensitivity='$zero', arp='$zero', vrp='$zero', pvarp='$zero', hysteresis='$zero', rate_smoothing='$zero' WHERE Serial_number='$serial'";
         mysqli_query($con, $query);
         //printing out values to the screen
@@ -88,7 +89,11 @@ session_start();
         echo "Atrial Amplitude: " . $atrial_amplitude;
         echo "<br>";
         echo "Atrial Pulse Width: " . $atrial_pulse_width;
-        echo "<br>";
+        echo "<br>"; }
+
+        else{
+            echo '<script>alert("lower limit can not exceed upper limit!")</script>'; 
+        }
     }
     ?>
     <br>
