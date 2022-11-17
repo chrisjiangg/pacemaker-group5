@@ -47,6 +47,9 @@ session_start();
         echo "Ventrical Pulse Width: " . $ventricular_pulse_width;
         echo "<br>";
     ?>
+    <br>
+    <a href="VOO.php"><button>Update</button></a>
+    <br>
     <h2>Change Parameters</h2>
         <form method="post">
             Lower Rate Limit (ppm): <input type="range" name="lower_rate_limit" placeholder="Lower Rate Limit" min = "30" max = "175" step= "1" value="30" oninput="rangeValue.innerText = this.value" required>

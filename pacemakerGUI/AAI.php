@@ -63,6 +63,9 @@ session_start();
         echo "Rate Smoothing: " . $rate_smoothing;
         echo "<br>";
     ?>
+    <br>
+    <a href="AAI.php"><button>Update</button></a>
+    <br>
     <h2>Change Parameters</h2>
         <!-- sliders -->
         <form method="post">
@@ -114,7 +117,7 @@ session_start();
         $zero = 0;
 
         if($upper_rate_limit>$lower_rate_limit){
-        $query = "UPDATE users SET lower_rate_limit='$lower_rate_limit', upper_rate_limit='$upper_rate_limit', atrial_amplitude='$atrial_amplitude', atrial_pulse_width='$atrial_pulse_width', atrial_sensitivity='$atrial_sensitivity', ventrical_amplitude='$zero', ventrical_pulse_width='$zero', ventrical_sensitivity='$zero', arp='$arp', vrp='$zero', pvarp='$pvarp', hysteresis='$hysteresis', rate_smoothing='$rate_smoothing' WHERE Serial_number='$serial'";
+        $query = "UPDATE users SET lower_rate_limit='$lower_rate_limit', upper_rate_limit='$upper_rate_limit', maximum_rate_sensor='$zero', atrial_amplitude='$atrial_amplitude', atrial_pulse_width='$atrial_pulse_width', atrial_sensitivity='$atrial_sensitivity', ventrical_amplitude='$zero', ventrical_pulse_width='$zero', ventrical_sensitivity='$zero', arp='$arp', vrp='$zero', pvarp='$pvarp', hysteresis='$hysteresis', rate_smoothing='$rate_smoothing', activity_threshold='$zero', reaction_time='$zero', response_factor='$zero', recovery_time='$zero' WHERE Serial_number='$serial'";
         
         mysqli_query($con, $query);
 

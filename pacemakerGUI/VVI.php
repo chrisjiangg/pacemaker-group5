@@ -60,6 +60,9 @@ session_start();
         echo "Rate Smoothing: " . $rate_smoothing;
         echo "<br>";
     ?>
+    <br>
+    <a href="VVI.php"><button>Update</button></a>
+    <br>
     <h2>Change Parameters</h2>
         <!-- sliders -->
         <form method="post">

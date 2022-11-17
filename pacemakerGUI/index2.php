@@ -36,13 +36,26 @@ session_start();
     <a href="AOO.php"><button>AOO</button></a>
     <br>
     <br>
-    <a href="VOO.php"><button>VOO</button></a>
+    <a href="AOOR.php"><button>AOOR</button></a>
     <br>
     <br>
     <a href="AAI.php"><button>AAI</button></a>
     <br>
     <br>
+    <a href="AAIR.php"><button>AAIR</button></a>
+    <br>
+    <br>
+    <a href="VOO.php"><button>VOO</button></a>
+    <br>
+    <br>
+    <a href="VOOR.php"><button>VOOR</button></a>
+    <br>
+    <br>
     <a href="VVI.php"><button>VVI</button></a>
+    <br>
+    <br>
+    <a href="VVIR.php"><button>VVIR</button></a>
+    <br>
     <br>
     <h2>Date and Time</h2>
     <a href="DateTime.php"><button>Edit</button></a>
