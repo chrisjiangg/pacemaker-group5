@@ -21,7 +21,7 @@ session_start();
     <!--Sets the viewport and makes it look good on all devices-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--Name of the tab-->
-    <title>VVI</title>
+    <title>VOOR</title>
 </head>
 <body>
     <!-- css styling -->
@@ -76,7 +76,10 @@ session_start();
             <p id="rangeValue">30</p>  
             Upper Rate Limit (ppm): <input type="range" name="upper_rate_limit" placeholder="Upper Rate Limit" min = "50" max = "175" step= "5" value="50" oninput="rangeValue1.innerText = this.value" required>
             <br>
-            <p id="rangeValue1">50</p>  
+            <p id="rangeValue1">50</p>
+            Maximum Sensor Rate: <input type="range" name="maximum_sensor_rate" placeholder= "Maximum Sensing Rate" min="50" max="175" step="5" value="0" oninput="rangeValue9.innerText = this.value" required>
+            <br>
+            <p id="rangeValue9">0</p> 
             Ventricular Amplitude (V): <input type="range" name="ventricular_amplitude" placeholder="Ventricular Amplitude" min= "0" max = "7" step= "0.1" value="0" oninput="rangeValue2.innerText = this.value" required>
             <br>
             <p id="rangeValue2">0</p>  
@@ -129,6 +132,8 @@ session_start();
         echo "Lower Rate Limit: " . $lower_rate_limit;
         echo "<br>";
         echo "Upper Rate Limit: " . $upper_rate_limit;
+        echo "<br>";
+        echo "Maximum Sensor Rate: " . $maximum_sensor_rate;
         echo "<br>";
         echo "Ventricular Amplitude: " . $ventricular_amplitude;
         echo "<br>";
