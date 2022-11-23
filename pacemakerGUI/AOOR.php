@@ -118,6 +118,15 @@ session_start();
         if ($lower_rate_limit < $upper_rate_limit){
         $query = "UPDATE users SET lower_rate_limit='$lower_rate_limit', upper_rate_limit='$upper_rate_limit', maximum_sensor_rate='$maximum_sensor_rate', atrial_amplitude='$atrial_amplitude', atrial_pulse_width='$atrial_pulse_width', atrial_sensitivity='$zero', ventrical_amplitude='$zero', ventrical_pulse_width='$zero', ventrical_sensitivity='$zero', arp='$zero', vrp='$zero', pvarp='$zero', hysteresis='$zero', rate_smoothing='$zero', activity_threshold='$activity_threshold', reaction_time='$reaction_time', response_factor='$response_factor', recovery_time='$recovery_time' WHERE Serial_number='$serial'";
         mysqli_query($con, $query);
+
+       //-----------------Outputing to file and triggering the python script----------------------------------------------------
+       exporting_to_file(); //exports only the user in session's data to text file 
+       $command = escapeshellcmd('python data.py');
+       $output = shell_exec($command);
+       echo $output;
+       //-----------------END----------------------------------------------------
+
+       
         //printing out values to the screen
         echo "Lower Rate Limit: " . $lower_rate_limit;
         echo "<br>";
