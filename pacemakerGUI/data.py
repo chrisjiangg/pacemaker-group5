@@ -1,46 +1,81 @@
 import serial
+import serial.tools.list_ports
 import struct
+import numpy as np
+
+# # Mac ports, for windows you have to find the ports yourself
+# frdm_port = "/dev/cu.usbmodem0000001234561"
+# Text file data converted to integer data type
+
+array =[]
+Data = np.genfromtxt("data.txt", dtype=int,encoding=None, delimiter=",")
+for each in Data:
+    array.append(each)
+
+lower_rate_limit = array[0]
+upper_rate_limit =array[0]
+ventrical_amp = array[2]
+ventrical_pulse_width = array[3]
+ventrical_sensitivity = array[4]
+vrp = array[5]
+hyster = array[6]
+rate_smoothing = array[7]
+atrial_amplitude = array[8]
+atrial_pulse_width = array[9]
+atrial_sensitivity = array[10]
+arp = array[11]
+pvarp = array[12]
+maximum_sensor_rate = array[13]
+activity_thres = array[14]
+reaction_time = array[15]
+response_factor = array[16]
+recovery_time = array[17]
+ 
+    
+Start = b'\x16'
+SYNC = b'\x22'
+Fn_set = b'\x55'
+lower_rate_limit_en = struct.pack("f", lower_rate_limit)
+upper_rate_limit_en =struct.pack("f", upper_rate_limit)
+ventrical_amp_en = struct.pack("f", ventrical_amp)
+ventrical_pulse_width_en = struct.pack("f", ventrical_pulse_width)
+ventrical_sensitivity_en = struct.pack("f", ventrical_sensitivity)
+vrp_en = struct.pack("f", vrp)
+hyster_en = struct.pack("f", hyster)
+rate_smoothing_en = struct.pack("f", rate_smoothing)
+atrial_amplitude_en = struct.pack("f", atrial_amplitude)
+atrial_pulse_width_en = struct.pack("f", atrial_amplitude)
+atrial_sensitivity_en = struct.pack("f", atrial_sensitivity)
+arp_en = struct.pack("f", arp)
+pvarp_en = struct.pack("f", pvarp)
+maximum_sensor_rate_en = struct.pack("f", maximum_sensor_rate)
+activity_thres_en = struct.pack("f", activity_thres)
+reaction_time_en = struct.pack("f", reaction_time)
+response_factor_en = struct.pack("f", response_factor)
+recovery_time_en = struct.pack("f", recovery_time)
 
 
-def sendSerial(mode, LRL, URL, Max_Sensor_Rate, AV_Delay, A_Amplitude, V_Amplitude, A_Pulse_Width, V_Pulse_Width, A_Sensitivity, V_Sensitivity, VRP, ARP, PVARP, Rate_Smoothing, Activity_Threshold, Reaction_Time, Response_Factor, Recovery_Time, Function_Call, port):
-    # Function_Call = 0 BY DEFAULT
 
-    st = struct.Struct('<BBBBBddBBddHHBBdBBBB')
+Signal_set = Start + Fn_set + lower_rate_limit_en + upper_rate_limit_en + ventrical_amp_en + ventrical_pulse_width_en + ventrical_sensitivity_en  + vrp_en + hyster_en + rate_smoothing_en + atrial_amplitude_en + atrial_pulse_width_en + atrial_sensitivity_en + arp_en + pvarp_en + maximum_sensor_rate_en + activity_thres_en + reaction_time_en + response_factor_en + recovery_time_en
+Signal_echo = Start + SYNC + lower_rate_limit_en + upper_rate_limit_en + ventrical_amp_en + ventrical_pulse_width_en + ventrical_sensitivity_en  + vrp_en + hyster_en + rate_smoothing_en + atrial_amplitude_en + atrial_pulse_width_en + atrial_sensitivity_en + arp_en + pvarp_en + maximum_sensor_rate_en + activity_thres_en + reaction_time_en + response_factor_en + recovery_time_en
+print (struct.unpack(Signal_echo))
+# with serial.Serial(frdm_port, 115200) as pacemaker:
+#     pacemaker.write(Signal_set)
 
-    mode_map = {
-        'AOO': 1,
-        'VOO': 2,
-        'AAI': 3,
-        'VVI': 4,
-        'DOO': 5,
-        'AOOR': 6,
-        'VOOR': 7,
-        'AAIR': 8,
-        'VVIR': 9,
-        'DOOR': 10
-    }
+# with serial.Serial(frdm_port, 115200) as pacemaker:
+#     pacemaker.write(Signal_echo)
+#     data = pacemaker.read(9)
+#     red_rev = data[0]
+#     green_rev = data[1]
+#     blue_rev = data[2]
+#     off_rev =  struct.unpack("f", data[3:7])[0]
+#     switch_rev =  struct.unpack("H", data[7:9])[0]
 
-    mode = mode_map[mode]
-    LRL = int(LRL)
-    URL = int(URL)
-    Max_Sensor_Rate = int(Max_Sensor_Rate)
-    AV_Delay = int(AV_Delay)
-    A_Pulse_Width = int(A_Pulse_Width)
-    V_Pulse_Width = int(V_Pulse_Width)
-    PVARP = int(PVARP)
-    Rate_Smoothing = int(Rate_Smoothing)
-    Reaction_Time = int(Reaction_Time)
-    Response_Factor = int(Response_Factor)
-    Recovery_Time = int(Recovery_Time)
-    Function_Call = int(Function_Call)
+# print("From the board:")
+# print("red_en = ", red_rev)
+# print("green_en = ", green_rev)
+# print("blue_en = ", blue_rev)
+# print("off_time = ",  off_rev)
+# print("switch_time = ", switch_rev)
 
-    serial_com = st.pack(mode, LRL, URL, Max_Sensor_Rate, AV_Delay, A_Amplitude, V_Amplitude, A_Pulse_Width, V_Pulse_Width, A_Sensitivity,
-                         V_Sensitivity, VRP, ARP, PVARP, Rate_Smoothing, Activity_Threshold, Reaction_Time, Response_Factor, Recovery_Time, Function_Call)
 
-    print(serial_com)
-    print(len(serial_com))
-    uC = serial.Serial(port, baudrate=115200)
-    uC.write(serial_com)
-    # unpacked = st.unpack(serial_com)
-    # print(unpacked)
-    uC.close()
