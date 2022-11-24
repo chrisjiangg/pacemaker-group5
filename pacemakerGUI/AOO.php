@@ -92,7 +92,8 @@ session_start();
         echo "Atrial Amplitude: " . $atrial_amplitude;
         echo "<br>";
         echo "Atrial Pulse Width: " . $atrial_pulse_width;
-        echo "<br>"; }
+        echo "<br>";
+        }
 
         else{
             echo '<script>alert("lower limit can not exceed upper limit!")</script>'; 
