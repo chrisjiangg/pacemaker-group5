@@ -36,23 +36,21 @@ session_start();
         //gets user data
         $lower_rate_limit = $user_data['lower_rate_limit'];
         $upper_rate_limit = $user_data['upper_rate_limit'];
-        $maximum_sensor_rate = $user_data['maximum_sensor_rate'];
         $ventricular_amplitude = $user_data['ventrical_amplitude'];
         $ventricular_pulse_width = $user_data['ventrical_pulse_width'];
         $ventricular_sensitivity = $user_data['ventrical_sensitivity'];
+        $maximum_sensor_rate = $user_data["maximum_sensor_rate"];
+        $reaction_time = $user_data["reaction_time"];
+        $response_factor = $user_data["response_factor"];
+        $activity_threshold = $user_data["activity_threshold"];
+        $recovery_time = $user_data["recovery_time"];
         $vrp = $user_data['vrp'];
         $hysteresis = $user_data['hysteresis'];
         $rate_smoothing = $user_data['rate_smoothing'];
-        $activity_threshold = $user_data['activity_threshold'];
-        $reaction_time = $user_data['reaction_time'];
-        $response_factor = $user_data['response_factor'];
-        $recovery_time = $user_data['recovery_time'];
         //printing out values to the screen
         echo "Lower Rate Limit: " . $lower_rate_limit;
         echo "<br>";
         echo "Upper Rate Limit: " . $upper_rate_limit;
-        echo "<br>";
-        echo "Maximum Sensor Rate: " . $maximum_sensor_rate;
         echo "<br>";
         echo "Atrial Amplitude: " . $ventricular_amplitude;
         echo "<br>";
@@ -60,11 +58,13 @@ session_start();
         echo "<br>";
         echo "Atrial Sensitivity: " . $ventricular_sensitivity;
         echo "<br>";
-        echo "ARP: " . $vrp;
+        echo "VRP: " . $vrp;
         echo "<br>";
         echo "Hysteresis: " . $hysteresis;
         echo "<br>";
         echo "Rate Smoothing: " . $rate_smoothing;
+        echo "<br>";
+        echo "Maximum Sensor Rate: " . $maximum_sensor_rate;
         echo "<br>";
         echo "Activity Threshold: " . $activity_threshold;
         echo "<br>";
@@ -86,40 +86,42 @@ session_start();
             <p id="rangeValue">30</p>  
             Upper Rate Limit (ppm): <input type="range" name="upper_rate_limit" placeholder="Upper Rate Limit" min = "50" max = "175" step= "5" value="50" oninput="rangeValue1.innerText = this.value" required>
             <br>
-            <p id="rangeValue1">50</p>
-            Maximum Sensor Rate (ppm): <input type="range" name="maximum_sensor_rate" placeholder="Maximum Sensor Rate" min = "50" max = "175" step= "5" value="50" oninput="rangeValue2.innerText = this.value" required>
+            <p id="rangeValue1">50</p>  
+            Ventricular Amplitude (V): <input type="range" name="ventricular_amplitude" placeholder="Ventricular Amplitude" min= "0" max = "7" step= "0.1" value="0" oninput="rangeValue2.innerText = this.value" required>
             <br>
-            <p id="rangeValue2">50</p>
-            Ventricular Amplitude (V): <input type="range" name="ventricular_amplitude" placeholder="Ventricular Amplitude" min= "0" max = "7" step= "0.1" value="0" oninput="rangeValue3.innerText = this.value" required>
+            <p id="rangeValue2">0</p>  
+            Ventricular Pulse Width (ms): <input type="range" name="ventricular_pulse_width" placeholder="Ventricular Pulse Width" min= "0.05" max = "1.9" step= "0.05" value="0.05" oninput="rangeValue3.innerText = this.value" required>
             <br>
-            <p id="rangeValue3">0</p>  
-            Ventricular Pulse Width (ms): <input type="range" name="ventricular_pulse_width" placeholder="Ventricular Pulse Width" min= "0.05" max = "1.9" step= "0.05" value="0.05" oninput="rangeValue4.innerText = this.value" required>
+            <p id="rangeValue3">0.05</p>
+            Ventricular Sensitivity (mV): <input type="range" name="ventricular_sensitivity" placeholder="Ventricular Sensitivity" min="0.25" max="10" list="sizes" value="0.25" step="0.25" oninput="rangeValue4.innerText=this.value" required>
             <br>
-            <p id="rangeValue4">0.05</p>
-            Ventricular Sensitivity (mV): <input type="range" name="ventricular_sensitivity" placeholder="Ventricular Sensitivity" min="0.25" max="10" list="sizes" value="0.25" step="0.25" oninput="rangeValue5.innerText=this.value" required>
+            <p id="rangeValue4">0.25</p>
+            VRP (ms): <input type="range" name="vrp" placeholder="VRP" min= "150" max = "500" step= "10" value="150" oninput="rangeValue5.innerText = this.value" required>
             <br>
-            <p id="rangeValue5">0.25</p>
-            VRP (ms): <input type="range" name="vrp" placeholder="VRP" min= "150" max = "500" step= "10" value="150" oninput="rangeValue6.innerText = this.value" required>
-            <br>
-            <p id="rangeValue6">150</p>
+            <p id="rangeValue5">150</p>
             Hysteresis (ppm): <input type="range" name="hysteresis" placeholder="Hysteresis" min = "30" max = "175" step= "1" value="0" oninput="rangeValue7.innerText = this.value" required>
             <br>
             <p id="rangeValue7">0</p>
             Rate Smoothing (%): <input type="range" name="rate_smoothing" placeholder= "Rate Smoothing" min="0" max="25" step="1" value="0" oninput="rangeValue8.innerText = this.value" required>
             <br>
-            <p id="rangeValue8">0</p>
-            Activity Threshold (V-Low=1, Low=2, Med-Low=3, Med=4, Med-High=5, High=6, V-High=7): <input type="range" name="activity_threshold" placeholder= "Activity Threshold" min="1" max="7" step="1" value="1" oninput="rangeValue10.innerText = this.value" required>
+            <!-- added -->
+            <p id="rangeValue8">0</p> 
+            Maximum Sensing Rate: <input type="range" name="maximum_sensor_rate" placeholder= "Maximum Sensing Rate" min="50" max="175" step="5" value="0" oninput="rangeValue9.innerText = this.value" required>
             <br>
-            <p id="rangeValue10">1</p>
-            Reaction Time (sec): <input type="range" name="reaction_time" placeholder= "Reaction Time" min="10" max="50" step="10" value="10" oninput="rangeValue11.innerText = this.value" required>
+            <p id="rangeValue9">0</p> 
+            Activity Threshold: <input type="range" name="activity_threshold" placeholder= "Activity Threshold" min="1" max="7" step="1" value="0" oninput="rangeValue10.innerText = this.value" required>
             <br>
-            <p id="rangeValue11">10</p>
-            Response Factor: <input type="range" name="response_factor" placeholder= "Response Factor" min="1" max="16" step="1" value="1" oninput="rangeValue12.innerText = this.value" required>
+            <p id="rangeValue10">0</p> 
+            Reaction Time: <input type="range" name="reaction_time" placeholder= "Reaction Time" min="10" max="50" step="10" value="0" oninput="rangeValue11.innerText = this.value" required>
             <br>
-            <p id="rangeValue12">1</p>
-            Recovery Time (min): <input type="range" name="recovery_time" placeholder= "Recovery Time" min="2" max="16" step="1" value="2" oninput="rangeValue13.innerText = this.value" required>
+            <p id="rangeValue11">0</p> 
+            Response Factor: <input type="range" name="response_factor" placeholder= "Response Factor" min="1" max="16" step="1" value="0" oninput="rangeValue12.innerText = this.value" required>
             <br>
-            <p id="rangeValue13">2</p>
+            <p id="rangeValue12">0</p> 
+            Recovery Time : <input type="range" name="recovery_time" placeholder= "Recovery Time" min="2" max="16" step="1" value="0" oninput="rangeValue13.innerText = this.value" required>
+            <br>
+            <!-- Done Adding -->
+            <p id="rangeValue13">0</p>
             <input type="submit">
             <br>
             <br>
@@ -130,32 +132,36 @@ session_start();
         //something was posted stored into variables
         $lower_rate_limit = $_POST["lower_rate_limit"];
         $upper_rate_limit = $_POST["upper_rate_limit"];
-        $maximum_sensor_rate = $_POST["maximum_sensor_rate"];
         $ventricular_amplitude = $_POST["ventricular_amplitude"];
         $ventricular_pulse_width = $_POST["ventricular_pulse_width"];
         $ventricular_sensitivity = $_POST["ventricular_sensitivity"];
         $vrp = $_POST["vrp"];
         $hysteresis = $_POST["hysteresis"];
         $rate_smoothing = $_POST["rate_smoothing"];
-        $activity_threshold = $_POST["activity_threshold"];
+        $maximum_sensor_rate = $_POST["maximum_sensor_rate"];
         $reaction_time = $_POST["reaction_time"];
         $response_factor = $_POST["response_factor"];
+        $activity_threshold = $_POST["activity_threshold"];
         $recovery_time = $_POST["recovery_time"];
         $serial = $_SESSION["serial"];
         $zero = 0;
 
         if($upper_rate_limit>$lower_rate_limit){
         
-        $query = "UPDATE users SET lower_rate_limit='$lower_rate_limit', upper_rate_limit='$upper_rate_limit', maximum_sensor_rate='$maximum_sensor_rate', atrial_amplitude='$zero', atrial_pulse_width='$zero', atrial_sensitivity='$zero', ventrical_amplitude='$ventricular_amplitude', ventrical_pulse_width='$ventricular_pulse_width', ventrical_sensitivity='$ventricular_sensitivity', arp='$zero', vrp='$vrp', pvarp='$zero', hysteresis='$hysteresis', rate_smoothing='$rate_smoothing', activity_threshold='$activity_threshold', reaction_time='$reaction_time', response_factor='$response_factor', recovery_time='$recovery_time' WHERE Serial_number='$serial'";
-        
+        $query = "UPDATE users SET lower_rate_limit='$lower_rate_limit', upper_rate_limit='$upper_rate_limit', maximum_sensor_rate='$maximum_sensor_rate', atrial_amplitude='$zero', atrial_pulse_width='$zero', atrial_sensitivity='$zero', ventrical_amplitude='$ventricular_amplitude', ventrical_pulse_width='$ventricular_pulse_width', ventrical_sensitivity='$ventricular_sensitivity', arp='$zero', vrp='$zero', pvarp='$zero', hysteresis='$hysteresis', rate_smoothing='$zero', activity_threshold='$activity_threshold', reaction_time='$reaction_time', response_factor='$response_factor', recovery_time='$recovery_time' WHERE Serial_number='$serial'";
         mysqli_query($con, $query);
+        
+       //-----------------Outputing to file and triggering the python script----------------------------------------------------
+       exporting_to_file(); //exports only the user in session's data to text file 
+       $command = escapeshellcmd('python data.py');
+       $output = shell_exec($command);
+       echo $output;
+       //-----------------END----------------------------------------------------
 
         //printing out values to the screen
         echo "Lower Rate Limit: " . $lower_rate_limit;
         echo "<br>";
         echo "Upper Rate Limit: " . $upper_rate_limit;
-        echo "<br>";
-        echo "Maximum Sensor Rate: " . $maximum_sensor_rate;
         echo "<br>";
         echo "Ventricular Amplitude: " . $ventricular_amplitude;
         echo "<br>";
@@ -169,17 +175,21 @@ session_start();
         echo "<br>";
         echo "Rate Smoothing: " . $rate_smoothing;
         echo "<br>";
-        echo "Activity Threshold: " . $activity_threshold;
+        echo "Maximum Sensing Rate: " . $maximum_sensor_rate;
         echo "<br>";
         echo "Reaction Time: " . $reaction_time;
         echo "<br>";
         echo "Response Factor: " . $response_factor;
         echo "<br>";
+        echo "Activity Threshold: " . $activity_threshold;
+        echo "<br>";
         echo "Recovery Time: " . $recovery_time;
         echo "<br>";
-        }
+    
+    }
 
         else{echo '<script>alert("lower limit can not exceed upper limit!")</script>'; }
+
     }
     ?>
     <br>

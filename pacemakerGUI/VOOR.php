@@ -43,16 +43,18 @@ session_start();
         $response_factor = $user_data["response_factor"];
         $activity_threshold = $user_data["activity_threshold"];
         $recovery_time = $user_data["recovery_time"];
+    
+
         //printing out values to the screen
         echo "Lower Rate Limit: " . $lower_rate_limit;
         echo "<br>";
         echo "Upper Rate Limit: " . $upper_rate_limit;
         echo "<br>";
+        echo "ventricular Amplitude: " . $ventricular_amplitude;
+        echo "<br>";
+        echo "ventricular Pulse Width: " . $ventricular_pulse_width;
+        echo "<br>";
         echo "Maximum Sensor Rate: " . $maximum_sensor_rate;
-        echo "<br>";
-        echo "Atrial Amplitude: " . $ventricular_amplitude;
-        echo "<br>";
-        echo "Atrial Pulse Width: " . $ventricular_pulse_width;
         echo "<br>";
         echo "Activity Threshold: " . $activity_threshold;
         echo "<br>";
@@ -83,8 +85,11 @@ session_start();
             <p id="rangeValue2">0</p>  
             Ventricular Pulse Width (ms): <input type="range" name="ventricular_pulse_width" placeholder="Ventricular Pulse Width" min= "0.05" max = "1.9" step= "0.05" value="0.05" oninput="rangeValue3.innerText = this.value" required>
             <br>
-            <p id="rangeValue3">0.05</p>
-            <!-- added --> 
+            <!-- added -->
+            <p id="rangeValue8">0</p> 
+            Maximum Sensing Rate: <input type="range" name="maximum_sensor_rate" placeholder= "Maximum Sensing Rate" min="50" max="175" step="5" value="0" oninput="rangeValue9.innerText = this.value" required>
+            <br>
+            <p id="rangeValue9">0</p> 
             Activity Threshold: <input type="range" name="activity_threshold" placeholder= "Activity Threshold" min="1" max="7" step="1" value="0" oninput="rangeValue10.innerText = this.value" required>
             <br>
             <p id="rangeValue10">0</p> 
@@ -123,6 +128,13 @@ session_start();
         $query = "UPDATE users SET lower_rate_limit='$lower_rate_limit', upper_rate_limit='$upper_rate_limit', maximum_sensor_rate='$maximum_sensor_rate', atrial_amplitude='$zero', atrial_pulse_width='$zero', atrial_sensitivity='$zero', ventrical_amplitude='$ventricular_amplitude', ventrical_pulse_width='$ventricular_pulse_width', ventrical_sensitivity='$zero', arp='$zero', vrp='$zero', pvarp='$zero', hysteresis='$zero', rate_smoothing='$zero', activity_threshold='$activity_threshold', reaction_time='$reaction_time', response_factor='$response_factor', recovery_time='$recovery_time' WHERE Serial_number='$serial'";
         mysqli_query($con, $query);
 
+       //-----------------Outputing to file and triggering the python script----------------------------------------------------
+       exporting_to_file(); //exports only the user in session's data to text file 
+       $command = escapeshellcmd('python data.py');
+       $output = shell_exec($command);
+       echo $output;
+       //-----------------END----------------------------------------------------
+
         //printing out values to the screen
         echo "Lower Rate Limit: " . $lower_rate_limit;
         echo "<br>";
@@ -133,6 +145,8 @@ session_start();
         echo "Ventricular Amplitude: " . $ventricular_amplitude;
         echo "<br>";
         echo "Ventricular Pulse Width: " . $ventricular_pulse_width;
+        echo "<br>";
+        echo "Maximum Sensing Rate: " . $maximum_sensor_rate;
         echo "<br>";
         echo "Reaction Time: " . $reaction_time;
         echo "<br>";
@@ -146,6 +160,7 @@ session_start();
     }
 
         else{echo '<script>alert("lower limit can not exceed upper limit!")</script>'; }
+
     }
     ?>
     <br>

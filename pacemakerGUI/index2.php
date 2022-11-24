@@ -5,6 +5,7 @@ session_start();
     include("functions.php");
     //checks if user is logged in if not it redirects the user
     $user_data = check_login($con);
+    empty_file();
 ?>
 
 <!DOCTYPE html>
