@@ -45,19 +45,14 @@ function exporting_to_file(){
     mysqli_select_db($con, "login_db");
     /* insert field values into data.txt */
     $id = $_SESSION['user_id'];
-    $query = "select mode, lower_rate_limit, upper_rate_limit, ventrical_amplitude, 
-    ventrical_pulse_width, ventrical_sensitivity, vrp, hysteresis, rate_smoothing, 
-    atrial_amplitude, atrial_pulse_width, atrial_sensitivity, arp, pvarp, maximum_sensor_rate, 
-    activity_threshold, reaction_time, response_factor, recovery_time from users where user_id = '$id' limit 1";
+    $query = "select mode, lower_rate_limit, upper_rate_limit, maximum_sensor_rate, atrial_amplitude, atrial_pulse_width, atrial_sensitivity, ventrical_amplitude, ventrical_pulse_width, ventrical_sensitivity, arp, vrp, pvarp, hysteresis, rate_smoothing, activity_threshold, reaction_time, response_factor, recovery_time from users where user_id = '$id' limit 1";
     //$query = "SELECT * FROM users";
     $result = mysqli_query($con,$query);   
-    while ($row = mysqli_fetch_array($result)) {          
-        $last = end($row);          
-        $num = mysqli_num_fields($result) ;    
-        for($i = 0; $i < $num; $i++) {            
-            fwrite($fh, $row[$i]);                      
-            if ($row[$i] != $last)
-               fwrite($fh, ", ");
+    while ($row = mysqli_fetch_array($result)) {                    
+        $num = mysqli_num_fields($result) ;
+        for($i = 0; $i < $num; $i++) {          
+            fwrite($fh, $row[$i]);
+            fwrite($fh, " ");    
         }                                                                 
         fwrite($fh, "\n");
     }
