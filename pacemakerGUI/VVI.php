@@ -57,7 +57,7 @@ session_start();
         echo "<br>";
         echo "Atrial Sensitivity: " . $ventricular_sensitivity;
         echo "<br>";
-        echo "ARP: " . $vrp;
+        echo "VRP: " . $vrp;
         echo "<br>";
         echo "Hysteresis: " . $hysteresis;
         echo "<br>";
