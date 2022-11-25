@@ -37,7 +37,11 @@ session_start();
         $upper_rate_limit = $user_data['upper_rate_limit'];
         $ventricular_amplitude = $user_data['ventrical_amplitude'];
         $ventricular_pulse_width =  $user_data['ventrical_pulse_width'];
+        $mode = $user_data['mode'];
+        
         //printing out values to the screen
+        echo "Mode: " . $mode;
+        echo "<br>";
         echo "Lower Rate Limit: " . $lower_rate_limit;
         echo "<br>";
         echo "Upper Rate Limit: " . $upper_rate_limit;
@@ -78,9 +82,10 @@ session_start();
         $ventricular_pulse_width = $_POST["ventricular_pulse_width"];
         $serial = $_SESSION["serial"];
         $zero = 0;
+        $mode = 3;
 
         if ($upper_rate_limit> $lower_rate_limit){
-        $query = "UPDATE users SET lower_rate_limit='$lower_rate_limit', upper_rate_limit='$upper_rate_limit', atrial_amplitude='$zero', atrial_pulse_width='$zero', atrial_sensitivity='$zero', ventrical_amplitude='$ventricular_amplitude', ventrical_pulse_width='$ventricular_pulse_width', ventrical_sensitivity='$zero', arp='$zero', vrp='$zero', pvarp='$zero', hysteresis='$zero', rate_smoothing='$zero' WHERE Serial_number='$serial'";
+        $query = "UPDATE users SET lower_rate_limit='$lower_rate_limit', upper_rate_limit='$upper_rate_limit', mode='$mode', atrial_amplitude='$zero', atrial_pulse_width='$zero', atrial_sensitivity='$zero', ventrical_amplitude='$ventricular_amplitude', ventrical_pulse_width='$ventricular_pulse_width', ventrical_sensitivity='$zero', arp='$zero', vrp='$zero', pvarp='$zero', hysteresis='$zero', rate_smoothing='$zero' WHERE Serial_number='$serial'";
         mysqli_query($con, $query);
 
         //-----------------Outputing to file and triggering the python script----------------------------------------------------
@@ -91,6 +96,8 @@ session_start();
         //-----------------END----------------------------------------------------
         
         //printing out values to the screen
+        echo "Mode (VOO): " . $mode;
+        echo "<br>";
         echo "Lower Rate Limit: " . $lower_rate_limit;
         echo "<br>";
         echo "Upper Rate Limit: " . $upper_rate_limit;

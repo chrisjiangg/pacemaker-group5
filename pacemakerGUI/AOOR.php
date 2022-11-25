@@ -43,7 +43,11 @@ session_start();
         $reaction_time = $user_data['reaction_time'];
         $response_factor = $user_data['response_factor'];
         $recovery_time = $user_data['recovery_time'];
+        $mode = $user_data['mode'];
+
         //printing out values to the screen
+        echo "Mode: " . $mode;
+        echo "<br>";
         echo "Lower Rate Limit: " . $lower_rate_limit;
         echo "<br>";
         echo "Upper Rate Limit: " . $upper_rate_limit;
@@ -114,9 +118,10 @@ session_start();
         $recovery_time = $_POST["recovery_time"];
         $serial = $_SESSION["serial"];
         $zero = 0;
+        $mode = 2;
         
         if ($lower_rate_limit < $upper_rate_limit){
-        $query = "UPDATE users SET lower_rate_limit='$lower_rate_limit', upper_rate_limit='$upper_rate_limit', maximum_sensor_rate='$maximum_sensor_rate', atrial_amplitude='$atrial_amplitude', atrial_pulse_width='$atrial_pulse_width', atrial_sensitivity='$zero', ventrical_amplitude='$zero', ventrical_pulse_width='$zero', ventrical_sensitivity='$zero', arp='$zero', vrp='$zero', pvarp='$zero', hysteresis='$zero', rate_smoothing='$zero', activity_threshold='$activity_threshold', reaction_time='$reaction_time', response_factor='$response_factor', recovery_time='$recovery_time' WHERE Serial_number='$serial'";
+        $query = "UPDATE users SET lower_rate_limit='$lower_rate_limit', upper_rate_limit='$upper_rate_limit', maximum_sensor_rate='$maximum_sensor_rate', mode='$mode', atrial_amplitude='$atrial_amplitude', atrial_pulse_width='$atrial_pulse_width', atrial_sensitivity='$zero', ventrical_amplitude='$zero', ventrical_pulse_width='$zero', ventrical_sensitivity='$zero', arp='$zero', vrp='$zero', pvarp='$zero', hysteresis='$zero', rate_smoothing='$zero', activity_threshold='$activity_threshold', reaction_time='$reaction_time', response_factor='$response_factor', recovery_time='$recovery_time' WHERE Serial_number='$serial'";
         mysqli_query($con, $query);
 
        //-----------------Outputing to file and triggering the python script----------------------------------------------------
@@ -128,6 +133,8 @@ session_start();
 
        
         //printing out values to the screen
+        echo "Mode (AOOR): " . $mode;
+        echo "<br>";
         echo "Lower Rate Limit: " . $lower_rate_limit;
         echo "<br>";
         echo "Upper Rate Limit: " . $upper_rate_limit;

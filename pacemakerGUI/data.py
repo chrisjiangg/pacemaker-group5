@@ -4,7 +4,7 @@ import struct
 import numpy as np
 
 # # Mac ports, for windows you have to find the ports yourself
-# frdm_port = "/dev/cu.usbmodem0000001234561"
+frdm_port = "COM3"
 # Text file data converted to integer data type
 
 array =[]
@@ -13,7 +13,7 @@ for each in Data:
     array.append(each)
 
 lower_rate_limit = array[0]
-upper_rate_limit =array[0]
+upper_rate_limit =array[1]
 ventrical_amp = array[2]
 ventrical_pulse_width = array[3]
 ventrical_sensitivity = array[4]
@@ -53,8 +53,6 @@ activity_thres_en = struct.pack("f", activity_thres)
 reaction_time_en = struct.pack("f", reaction_time)
 response_factor_en = struct.pack("f", response_factor)
 recovery_time_en = struct.pack("f", recovery_time)
-
-
 
 Signal_set = Start + Fn_set + lower_rate_limit_en + upper_rate_limit_en + ventrical_amp_en + ventrical_pulse_width_en + ventrical_sensitivity_en  + vrp_en + hyster_en + rate_smoothing_en + atrial_amplitude_en + atrial_pulse_width_en + atrial_sensitivity_en + arp_en + pvarp_en + maximum_sensor_rate_en + activity_thres_en + reaction_time_en + response_factor_en + recovery_time_en
 Signal_echo = Start + SYNC + lower_rate_limit_en + upper_rate_limit_en + ventrical_amp_en + ventrical_pulse_width_en + ventrical_sensitivity_en  + vrp_en + hyster_en + rate_smoothing_en + atrial_amplitude_en + atrial_pulse_width_en + atrial_sensitivity_en + arp_en + pvarp_en + maximum_sensor_rate_en + activity_thres_en + reaction_time_en + response_factor_en + recovery_time_en

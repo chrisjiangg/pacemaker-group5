@@ -71,4 +71,17 @@ function empty_file(){
 
 }
 
+//sends data
+function sendData($lower_rate_limit, $upper_rate_limit, $atrial_amplitude, $atrial_pulse_width, $atrial_sensitivity, $ventricular_amplitude, $ventricular_pulse_width, $ventricular_sensitivity, $arp, $vrp, $pvarp, $hysteresis, $rate_smoothing, $activity_threshold, $reaction_time, $response_factor, $recovery_time, $maximum_sensor_rate){
+    //checks if local machine is little endian
+    $littleEndian = isLittleEndian();
+    if($littleEndian == 1){
+        
+    }
+    else{
+
+    }
+    
+}
+
 ?>

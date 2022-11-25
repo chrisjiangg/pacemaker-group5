@@ -38,8 +38,11 @@ session_start();
         $upper_rate_limit = $user_data['upper_rate_limit'];
         $atrial_amplitude = $user_data['atrial_amplitude'];
         $atrial_pulse_width = $user_data['atrial_pulse_width'];
-        
+        $mode = $user_data['mode'];
+
         //printing out values to the screen
+        echo "Mode: " . $mode;
+        echo "<br>";
         echo "Lower Rate Limit: " . $lower_rate_limit;
         echo "<br>";
         echo "Upper Rate Limit: " . $upper_rate_limit;
@@ -80,9 +83,10 @@ session_start();
         $atrial_pulse_width = $_POST["atrial_pulse_width"];
         $serial = $_SESSION["serial"];
         $zero = 0;
+        $mode = 1;
         
         if ($lower_rate_limit < $upper_rate_limit){
-        $query = "UPDATE users SET lower_rate_limit='$lower_rate_limit', upper_rate_limit='$upper_rate_limit', maximum_sensor_rate='$zero', atrial_amplitude='$atrial_amplitude', atrial_pulse_width='$atrial_pulse_width', atrial_sensitivity='$zero', ventrical_amplitude='$zero', ventrical_pulse_width='$zero', ventrical_sensitivity='$zero', arp='$zero', vrp='$zero', pvarp='$zero', hysteresis='$zero', rate_smoothing='$zero', activity_threshold='$zero', reaction_time='$zero', response_factor='$zero', recovery_time='$zero' WHERE Serial_number='$serial'";
+        $query = "UPDATE users SET lower_rate_limit='$lower_rate_limit', upper_rate_limit='$upper_rate_limit', maximum_sensor_rate='$zero', mode='$mode', atrial_amplitude='$atrial_amplitude', atrial_pulse_width='$atrial_pulse_width', atrial_sensitivity='$zero', ventrical_amplitude='$zero', ventrical_pulse_width='$zero', ventrical_sensitivity='$zero', arp='$zero', vrp='$zero', pvarp='$zero', hysteresis='$zero', rate_smoothing='$zero', activity_threshold='$zero', reaction_time='$zero', response_factor='$zero', recovery_time='$zero' WHERE Serial_number='$serial'";
         mysqli_query($con, $query);
         
        //-----------------Outputing to file and triggering the python script----------------------------------------------------
@@ -92,6 +96,8 @@ session_start();
        echo $output;
        //-----------------END----------------------------------------------------
         //printing out values to the screen
+        echo "Mode (AOO): " . $mode;
+        echo "<br>";
         echo "Lower Rate Limit: " . $lower_rate_limit;
         echo "<br>";
         echo "Upper Rate Limit: " . $upper_rate_limit;

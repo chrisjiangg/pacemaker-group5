@@ -42,7 +42,11 @@ session_start();
         $vrp = $user_data['vrp'];
         $hysteresis = $user_data['hysteresis'];
         $rate_smoothing = $user_data['rate_smoothing'];
+        $mode = $user_data['mode'];
+
         //printing out values to the screen
+        echo "Mode: " . $mode;
+        echo "<br>";
         echo "Lower Rate Limit: " . $lower_rate_limit;
         echo "<br>";
         echo "Upper Rate Limit: " . $upper_rate_limit;
@@ -108,10 +112,11 @@ session_start();
         $rate_smoothing = $_POST["rate_smoothing"];
         $serial = $_SESSION["serial"];
         $zero = 0;
+        $mode = 7;
 
         if($upper_rate_limit>$lower_rate_limit){
         
-        $query = "UPDATE users SET lower_rate_limit='$lower_rate_limit', upper_rate_limit='$upper_rate_limit', atrial_amplitude='$zero', atrial_pulse_width='$zero', atrial_sensitivity='$zero', ventrical_amplitude='$ventricular_amplitude', ventrical_pulse_width='$ventricular_pulse_width', ventrical_sensitivity='$ventricular_sensitivity', arp='$zero', vrp='$vrp', pvarp='$zero', hysteresis='$hysteresis', rate_smoothing='$rate_smoothing' WHERE Serial_number='$serial'";
+        $query = "UPDATE users SET lower_rate_limit='$lower_rate_limit', upper_rate_limit='$upper_rate_limit', mode='$mode', atrial_amplitude='$zero', atrial_pulse_width='$zero', atrial_sensitivity='$zero', ventrical_amplitude='$ventricular_amplitude', ventrical_pulse_width='$ventricular_pulse_width', ventrical_sensitivity='$ventricular_sensitivity', arp='$zero', vrp='$vrp', pvarp='$zero', hysteresis='$hysteresis', rate_smoothing='$rate_smoothing' WHERE Serial_number='$serial'";
         
         mysqli_query($con, $query);
         
@@ -123,6 +128,7 @@ session_start();
        //-----------------END----------------------------------------------------
 
         //printing out values to the screen
+        echo "Mode (VVI): " . $mode;
         echo "Lower Rate Limit: " . $lower_rate_limit;
         echo "<br>";
         echo "Upper Rate Limit: " . $upper_rate_limit;
