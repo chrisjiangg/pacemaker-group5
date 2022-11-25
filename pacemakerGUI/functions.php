@@ -33,11 +33,11 @@ function random_num($length){
 }
 
 //checks if local machine is little endian
-function isLittleEndian() {
-    $testint = 0x00FF;
-    $p = pack('S', $testint);
-    return $testint===current(unpack('v', $p));
-}
+// function isLittleEndian() {
+//     $testint = 0x00FF;
+//     $p = pack('S', $testint);
+//     return $testint===current(unpack('v', $p));
+// }
 
 function exporting_to_file(){
     $fh = fopen('data.txt', 'w');
@@ -45,7 +45,7 @@ function exporting_to_file(){
     mysqli_select_db($con, "login_db");
     /* insert field values into data.txt */
     $id = $_SESSION['user_id'];
-    $query = "select lower_rate_limit, upper_rate_limit, ventrical_amplitude, 
+    $query = "select mode, lower_rate_limit, upper_rate_limit, ventrical_amplitude, 
     ventrical_pulse_width, ventrical_sensitivity, vrp, hysteresis, rate_smoothing, 
     atrial_amplitude, atrial_pulse_width, atrial_sensitivity, arp, pvarp, maximum_sensor_rate, 
     activity_threshold, reaction_time, response_factor, recovery_time from users where user_id = '$id' limit 1";
@@ -72,16 +72,15 @@ function empty_file(){
 }
 
 //sends data
-function sendData($lower_rate_limit, $upper_rate_limit, $atrial_amplitude, $atrial_pulse_width, $atrial_sensitivity, $ventricular_amplitude, $ventricular_pulse_width, $ventricular_sensitivity, $arp, $vrp, $pvarp, $hysteresis, $rate_smoothing, $activity_threshold, $reaction_time, $response_factor, $recovery_time, $maximum_sensor_rate){
-    //checks if local machine is little endian
-    $littleEndian = isLittleEndian();
-    if($littleEndian == 1){
+// function sendData($lower_rate_limit, $upper_rate_limit, $atrial_amplitude, $atrial_pulse_width, $atrial_sensitivity, $ventricular_amplitude, $ventricular_pulse_width, $ventricular_sensitivity, $arp, $vrp, $pvarp, $hysteresis, $rate_smoothing, $activity_threshold, $reaction_time, $response_factor, $recovery_time, $maximum_sensor_rate){
+////checks if local machine is little endian
+//     $littleEndian = isLittleEndian();
+//     if($littleEndian == 1){
         
-    }
-    else{
+//     }
+//     else{
 
-    }
+//     }
     
-}
-
+// }
 ?>
