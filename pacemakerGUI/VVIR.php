@@ -91,13 +91,13 @@ session_start();
             Upper Rate Limit (ppm): <input type="range" name="upper_rate_limit" placeholder="Upper Rate Limit" min = "50" max = "175" step= "5" value="50" oninput="rangeValue1.innerText = this.value" required>
             <br>
             <p id="rangeValue1">50</p>  
-            Ventricular Amplitude (V): <input type="range" name="ventricular_amplitude" placeholder="Ventricular Amplitude" min= "0" max = "7" step= "0.1" value="0" oninput="rangeValue2.innerText = this.value" required>
+            Ventricular Amplitude (V): <input type="range" name="ventricular_amplitude" placeholder="Ventricular Amplitude" min= "0.1" max = "5" step= "0.1" value="0" oninput="rangeValue2.innerText = this.value" required>
             <br>
             <p id="rangeValue2">0</p>  
-            Ventricular Pulse Width (ms): <input type="range" name="ventricular_pulse_width" placeholder="Ventricular Pulse Width" min= "0.05" max = "1.9" step= "0.05" value="0.05" oninput="rangeValue3.innerText = this.value" required>
+            Ventricular Pulse Width (ms): <input type="range" name="ventricular_pulse_width" placeholder="Ventricular Pulse Width" min= "1" max = "30" step= "1" value="0.05" oninput="rangeValue3.innerText = this.value" required>
             <br>
             <p id="rangeValue3">0.05</p>
-            Ventricular Sensitivity (mV): <input type="range" name="ventricular_sensitivity" placeholder="Ventricular Sensitivity" min="0.25" max="10" list="sizes" value="0.25" step="0.25" oninput="rangeValue4.innerText=this.value" required>
+            Ventricular Sensitivity (mV): <input type="range" name="ventricular_sensitivity" placeholder="Ventricular Sensitivity" min="0" max="5" list="sizes" value="0.25" step="0.1" oninput="rangeValue4.innerText=this.value" required>
             <br>
             <p id="rangeValue4">0.25</p>
             VRP (ms): <input type="range" name="vrp" placeholder="VRP" min= "150" max = "500" step= "10" value="150" oninput="rangeValue5.innerText = this.value" required>

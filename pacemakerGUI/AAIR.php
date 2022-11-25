@@ -97,13 +97,13 @@ session_start();
             Maximum Sensor Rate (ppm): <input type="range" name="maximum_sensor_rate" placeholder="Maximum Sensor Rate" min = "50" max = "175" step= "5" value="50" oninput="rangeValue2.innerText = this.value" required>
             <br>
             <p id="rangeValue2">50</p> 
-            Atrial Amplitude (V): <input type="range" name="atrial_amplitude" placeholder="Atrial Amplitude" min= "0" max = "7" step= "0.1" value="0" oninput="rangeValue3.innerText = this.value" required>
+            Atrial Amplitude (V): <input type="range" name="atrial_amplitude" placeholder="Atrial Amplitude" min= "0" max = "5" step= "0.1" value="0" oninput="rangeValue3.innerText = this.value" required>
             <br>
             <p id="rangeValue3">0</p>  
-            Atrial Pulse Width (ms): <input type="range" name="atrial_pulse_width" placeholder="Atrial Pulse Width" min= "0.05" max = "1.9" step= "0.05" value="0.05" oninput="rangeValue4.innerText = this.value" required>
+            Atrial Pulse Width (ms): <input type="range" name="atrial_pulse_width" placeholder="Atrial Pulse Width" min= "1" max = "30" step= "1" value="0.05" oninput="rangeValue4.innerText = this.value" required>
             <br>
             <p id="rangeValue4">0.05</p>
-            Atrial Sensitivity (mV): <input type="range" name="atrial_sensitivity" placeholder="Atrial Sensitivity" min="0.25" max="10" value="0.25" step="0.25" oninput="rangeValue5.innerText=this.value" required>
+            Atrial Sensitivity (mV): <input type="range" name="atrial_sensitivity" placeholder="Atrial Sensitivity" min="0" max="5" value="0.25" step="0.1" oninput="rangeValue5.innerText=this.value" required>
             <br>
             <p id="rangeValue5">0.25</p>
             ARP (ms): <input type="range" name="arp" placeholder="ARP" min= "150" max = "500" step= "10" value="150" oninput="rangeValue6.innerText = this.value" required>

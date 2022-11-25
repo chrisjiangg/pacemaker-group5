@@ -81,10 +81,10 @@ session_start();
             Maximum Sensor Rate (ppm): <input type="range" name="maximum_sensor_rate" placeholder="Maximum Sensor Rate" min = "50" max = "175" step= "5" value="50" oninput="rangeValue2.innerText = this.value" required>
             <br>
             <p id="rangeValue2">50</p>
-            Atrial Amplitude (V): <input type="range" name="atrial_amplitude" placeholder="Atrial Amplitude" min= "0" max = "7" step= "0.1" value="0" oninput="rangeValue3.innerText = this.value" required>
+            Atrial Amplitude (V): <input type="range" name="atrial_amplitude" placeholder="Atrial Amplitude" min= "0.1" max = "5" step= "0.1" value="0" oninput="rangeValue3.innerText = this.value" required>
             <br>
             <p id="rangeValue3">0</p>  
-            Atrial Pulse Width (ms): <input type="range" name="atrial_pulse_width" placeholder="Atrial Pulse Width" min= "0.05" max = "1.9" step= "0.05" value="0.05" oninput="rangeValue4.innerText = this.value" required>
+            Atrial Pulse Width (ms): <input type="range" name="atrial_pulse_width" placeholder="Atrial Pulse Width" min= "1" max = "30" step= "1" value="0.05" oninput="rangeValue4.innerText = this.value" required>
             <br>
             <p id="rangeValue4">0.05</p>
             Activity Threshold (V-Low=1, Low=2, Med-Low=3, Med=4, Med-High=5, High=6, V-High=7): <input type="range" name="activity_threshold" placeholder= "Activity Threshold" min="1" max="7" step="1" value="1" oninput="rangeValue5.innerText = this.value" required>

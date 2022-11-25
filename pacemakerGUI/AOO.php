@@ -63,10 +63,10 @@ session_start();
             Upper Rate Limit (ppm): <input type="range" name="upper_rate_limit" placeholder="Upper Rate Limit" min = "50.0" max = "175.0" step= "5" value="50" oninput="rangeValue1.innerText = this.value" required>
             <br>
             <p id="rangeValue1">50</p>  
-            Atrial Amplitude (V): <input type="range" name="atrial_amplitude" placeholder="Atrial Amplitude" min= "0" max = "7" step= "0.1" value="0" oninput="rangeValue2.innerText = this.value" required>
+            Atrial Amplitude (V): <input type="range" name="atrial_amplitude" placeholder="Atrial Amplitude" min= "0" max = "5" step= "0.1" value="0" oninput="rangeValue2.innerText = this.value" required>
             <br>
             <p id="rangeValue2">0</p>  
-            Atrial Pulse Width (ms): <input type="range" name="atrial_pulse_width" placeholder="Atrial Pulse Width" min= "0.05" max = "1.9" step= "0.05" value="0.05" oninput="rangeValue3.innerText = this.value" required>
+            Atrial Pulse Width (ms): <input type="range" name="atrial_pulse_width" placeholder="Atrial Pulse Width" min= "1" max = "30" step= "1" value="0.05" oninput="rangeValue3.innerText = this.value" required>
             <br>
             <p id="rangeValue3">0.05</p>
             <input type="submit">

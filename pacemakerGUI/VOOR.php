@@ -82,10 +82,10 @@ session_start();
             Maximum Sensor Rate: <input type="range" name="maximum_sensor_rate" placeholder= "Maximum Sensing Rate" min="50" max="175" step="5" value="0" oninput="rangeValue9.innerText = this.value" required>
             <br>
             <p id="rangeValue9">0</p> 
-            Ventricular Amplitude (V): <input type="range" name="ventricular_amplitude" placeholder="Ventricular Amplitude" min= "0" max = "7" step= "0.1" value="0" oninput="rangeValue2.innerText = this.value" required>
+            Ventricular Amplitude (V): <input type="range" name="ventricular_amplitude" placeholder="Ventricular Amplitude" min= "0.1" max = "5" step= "0.1" value="0" oninput="rangeValue2.innerText = this.value" required>
             <br>
             <p id="rangeValue2">0</p>  
-            Ventricular Pulse Width (ms): <input type="range" name="ventricular_pulse_width" placeholder="Ventricular Pulse Width" min= "0.05" max = "1.9" step= "0.05" value="0.05" oninput="rangeValue3.innerText = this.value" required>
+            Ventricular Pulse Width (ms): <input type="range" name="ventricular_pulse_width" placeholder="Ventricular Pulse Width" min= "1" max = "30" step= "1" value="0.05" oninput="rangeValue3.innerText = this.value" required>
             <br>
             <!-- added -->
             <p id="rangeValue8">0</p> 
