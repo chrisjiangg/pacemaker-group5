@@ -1,0 +1,25 @@
+VVI_prev.o: C:/PACEMA~1/PACEMA~1/SIMULI~2/VVI_prev_ert_rtw/VVI_prev.c \
+ C:/PACEMA~1/PACEMA~1/SIMULI~2/VVI_prev_ert_rtw/VVI_prev.h \
+ C:/PACEMA~1/PACEMA~1/SIMULI~2/VVI_prev_ert_rtw/rtwtypes.h \
+ C:/ProgramData/MATLAB/SupportPackages/R2022a/toolbox/target/supportpackages/freedomk64f/include/MW_digitalIO.h \
+ C:/ProgramData/MATLAB/SupportPackages/R2022a/toolbox/target/supportpackages/freedomk64f/include/MW_SVD.h \
+ C:/pacemaker/pacemaker-group5/Simulink\ Assignment\ 2/VVI_prev_ert_rtw/rtwtypes.h \
+ C:/ProgramData/MATLAB/SupportPackages/R2022a/toolbox/target/supportpackages/freedomk64f/include/MW_PWM.h \
+ C:/PACEMA~1/PACEMA~1/SIMULI~2/VVI_prev_ert_rtw/VVI_prev_types.h \
+ C:/ProgramData/MATLAB/SupportPackages/R2022a/toolbox/target/supportpackages/freedomk64f/include/MW_SVD.h
+
+C:/PACEMA~1/PACEMA~1/SIMULI~2/VVI_prev_ert_rtw/VVI_prev.h:
+
+C:/PACEMA~1/PACEMA~1/SIMULI~2/VVI_prev_ert_rtw/rtwtypes.h:
+
+C:/ProgramData/MATLAB/SupportPackages/R2022a/toolbox/target/supportpackages/freedomk64f/include/MW_digitalIO.h:
+
+C:/ProgramData/MATLAB/SupportPackages/R2022a/toolbox/target/supportpackages/freedomk64f/include/MW_SVD.h:
+
+C:/pacemaker/pacemaker-group5/Simulink\ Assignment\ 2/VVI_prev_ert_rtw/rtwtypes.h:
+
+C:/ProgramData/MATLAB/SupportPackages/R2022a/toolbox/target/supportpackages/freedomk64f/include/MW_PWM.h:
+
+C:/PACEMA~1/PACEMA~1/SIMULI~2/VVI_prev_ert_rtw/VVI_prev_types.h:
+
+C:/ProgramData/MATLAB/SupportPackages/R2022a/toolbox/target/supportpackages/freedomk64f/include/MW_SVD.h:
