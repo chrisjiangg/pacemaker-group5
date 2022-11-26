@@ -56,6 +56,8 @@ session_start();
         echo "<br>";
         echo "Upper Rate Limit: " . $upper_rate_limit;
         echo "<br>";
+        echo "Maximum Sensor Rate: " . $maximum_sensor_rate;
+        echo "<br>";
         echo "Atrial Amplitude: " . $ventricular_amplitude;
         echo "<br>";
         echo "Atrial Pulse Width: " . $ventricular_pulse_width;
@@ -67,8 +69,6 @@ session_start();
         echo "Hysteresis: " . $hysteresis;
         echo "<br>";
         echo "Rate Smoothing: " . $rate_smoothing;
-        echo "<br>";
-        echo "Maximum Sensor Rate: " . $maximum_sensor_rate;
         echo "<br>";
         echo "Activity Threshold: " . $activity_threshold;
         echo "<br>";
@@ -106,9 +106,9 @@ session_start();
             VRP (ms): <input type="range" name="vrp" placeholder="VRP" min= "150" max = "500" step= "1" value="150" oninput="rangeValue5.innerText = this.value" required>
             <br>
             <p id="rangeValue5">150</p>
-            Hysteresis (ppm): <input type="range" name="hysteresis" placeholder="Hysteresis" min = "30" max = "175" step= "1" value="30" oninput="rangeValue7.innerText = this.value" required>
+            Hysteresis (ppm): <input type="range" name="hysteresis" placeholder="Hysteresis" min = "0" max = "175" step= "1" value="0" oninput="rangeValue7.innerText = this.value" required>
             <br>
-            <p id="rangeValue7">30</p>
+            <p id="rangeValue7">0</p>
             Rate Smoothing (%): <input type="range" name="rate_smoothing" placeholder= "Rate Smoothing" min="0" max="25" step="1" value="0" oninput="rangeValue8.innerText = this.value" required>
             <br>
             <!-- added -->

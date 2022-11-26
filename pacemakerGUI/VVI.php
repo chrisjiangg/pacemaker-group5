@@ -88,9 +88,9 @@ session_start();
             VRP (ms): <input type="range" name="vrp" placeholder="VRP" min= "150" max = "500" step= "1" value="150" oninput="rangeValue5.innerText = this.value" required>
             <br>
             <p id="rangeValue5">150</p>
-            Hysteresis (ppm): <input type="range" name="hysteresis" placeholder="Hysteresis" min = "30" max = "175" step= "1" value="30" oninput="rangeValue7.innerText = this.value" required>
+            Hysteresis (ppm): <input type="range" name="hysteresis" placeholder="Hysteresis" min = "0" max = "175" step= "1" value="0" oninput="rangeValue7.innerText = this.value" required>
             <br>
-            <p id="rangeValue7">30</p>
+            <p id="rangeValue7">0</p>
             Rate Smoothing (%): <input type="range" name="rate_smoothing" placeholder= "Rate Smoothing" min="0" max="25" step="1" value="0" oninput="rangeValue8.innerText = this.value" required>
             <br>
             <p id="rangeValue8">0</p>
