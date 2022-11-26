@@ -39,12 +39,11 @@ reaction_time = array[16]
 response_factor = array[17]
 recovery_time = array[18]
 
-Start = b'\x16' #unsigned 22
-SYNC = b'\x22' #unsigned 34
-Fn_set = b'\x55' #unsigned 85
-
 if(endian_check()==True):
     # little endian
+    Start = b'\x16' #unsigned 22
+    SYNC = b'\x22' #unsigned 34
+    Fn_set = b'\x55' #unsigned 85
     mode_en = struct.pack("<B", int(mode))
     lower_rate_limit_en = struct.pack("<B", int(lower_rate_limit))
     upper_rate_limit_en =struct.pack("<B", int(upper_rate_limit))
@@ -66,6 +65,9 @@ if(endian_check()==True):
     recovery_time_en = struct.pack("<B", int(recovery_time))
 else:
     # Big endian
+    Start = b'\x16' #unsigned 22
+    SYNC = b'\x22' #unsigned 34
+    Fn_set = b'\x55' #unsigned 85
     mode_en = struct.pack(">B", int(mode))
     lower_rate_limit_en = struct.pack(">B", int(lower_rate_limit))
     upper_rate_limit_en =struct.pack(">B", int(upper_rate_limit))
