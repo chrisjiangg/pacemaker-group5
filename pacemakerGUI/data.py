@@ -42,25 +42,49 @@ recovery_time = array[18]
 Start = b'\x16' #unsigned 22
 SYNC = b'\x22' #unsigned 34
 Fn_set = b'\x55' #unsigned 85
-mode_en = struct.pack("B", int(mode))
-lower_rate_limit_en = struct.pack("B", int(lower_rate_limit))
-upper_rate_limit_en =struct.pack("B", int(upper_rate_limit))
-ventrical_amp_en = struct.pack("f", float(ventrical_amp))
-ventrical_pulse_width_en = struct.pack("f", float(ventrical_pulse_width))
-ventrical_sensitivity_en = struct.pack("f", float(ventrical_sensitivity))
-vrp_en = struct.pack("H", int(vrp))
-hyster_en = struct.pack("B", int(hyster))
-rate_smoothing_en = struct.pack("B", int(rate_smoothing))
-atrial_amplitude_en = struct.pack("f", float(atrial_amplitude))
-atrial_pulse_width_en = struct.pack("f", float(atrial_pulse_width))
-atrial_sensitivity_en = struct.pack("f", float(atrial_sensitivity))
-arp_en = struct.pack("H", int(arp))
-pvarp_en = struct.pack("H", int(pvarp))
-maximum_sensor_rate_en = struct.pack("B", int(maximum_sensor_rate))
-activity_thres_en = struct.pack("B", int(activity_thres))
-reaction_time_en = struct.pack("B", int(reaction_time))
-response_factor_en = struct.pack("B", int(response_factor))
-recovery_time_en = struct.pack("B", int(recovery_time))
+
+if(endian_check()==True):
+    # little endian
+    mode_en = struct.pack("<B", int(mode))
+    lower_rate_limit_en = struct.pack("<B", int(lower_rate_limit))
+    upper_rate_limit_en =struct.pack("<B", int(upper_rate_limit))
+    ventrical_amp_en = struct.pack("<f", float(ventrical_amp))
+    ventrical_pulse_width_en = struct.pack("<f", float(ventrical_pulse_width))
+    ventrical_sensitivity_en = struct.pack("<f", float(ventrical_sensitivity))
+    vrp_en = struct.pack("<H", int(vrp))
+    hyster_en = struct.pack("<B", int(hyster))
+    rate_smoothing_en = struct.pack("<B", int(rate_smoothing))
+    atrial_amplitude_en = struct.pack("<f", float(atrial_amplitude))
+    atrial_pulse_width_en = struct.pack("<f", float(atrial_pulse_width))
+    atrial_sensitivity_en = struct.pack("<f", float(atrial_sensitivity))
+    arp_en = struct.pack("<H", int(arp))
+    pvarp_en = struct.pack("<H", int(pvarp))
+    maximum_sensor_rate_en = struct.pack("<B", int(maximum_sensor_rate))
+    activity_thres_en = struct.pack("<B", int(activity_thres))
+    reaction_time_en = struct.pack("<B", int(reaction_time))
+    response_factor_en = struct.pack("<B", int(response_factor))
+    recovery_time_en = struct.pack("<B", int(recovery_time))
+else:
+    # Big endian
+    mode_en = struct.pack(">B", int(mode))
+    lower_rate_limit_en = struct.pack(">B", int(lower_rate_limit))
+    upper_rate_limit_en =struct.pack(">B", int(upper_rate_limit))
+    ventrical_amp_en = struct.pack(">f", float(ventrical_amp))
+    ventrical_pulse_width_en = struct.pack(">f", float(ventrical_pulse_width))
+    ventrical_sensitivity_en = struct.pack(">f", float(ventrical_sensitivity))
+    vrp_en = struct.pack(">H", int(vrp))
+    hyster_en = struct.pack(">B", int(hyster))
+    rate_smoothing_en = struct.pack(">B", int(rate_smoothing))
+    atrial_amplitude_en = struct.pack(">f", float(atrial_amplitude))
+    atrial_pulse_width_en = struct.pack(">f", float(atrial_pulse_width))
+    atrial_sensitivity_en = struct.pack(">f", float(atrial_sensitivity))
+    arp_en = struct.pack(">H", int(arp))
+    pvarp_en = struct.pack(">H", int(pvarp))
+    maximum_sensor_rate_en = struct.pack(">B", int(maximum_sensor_rate))
+    activity_thres_en = struct.pack(">B", int(activity_thres))
+    reaction_time_en = struct.pack(">B", int(reaction_time))
+    response_factor_en = struct.pack(">B", int(response_factor))
+    recovery_time_en = struct.pack(">B", int(recovery_time))
 
 # print("Start: ", Start)
 # print("SYNC: ", SYNC)
@@ -127,20 +151,21 @@ recovery_time_de = struct.unpack("B", recovery_time_en)
 
 Signal_set = Start + Fn_set + mode_en + lower_rate_limit_en + upper_rate_limit_en + ventrical_amp_en + ventrical_pulse_width_en + ventrical_sensitivity_en  + vrp_en + hyster_en + rate_smoothing_en + atrial_amplitude_en + atrial_pulse_width_en + atrial_sensitivity_en + arp_en + pvarp_en + maximum_sensor_rate_en + activity_thres_en + reaction_time_en + response_factor_en + recovery_time_en
 Signal_echo = Start + SYNC + mode_en + lower_rate_limit_en + upper_rate_limit_en + ventrical_amp_en + ventrical_pulse_width_en + ventrical_sensitivity_en  + vrp_en + hyster_en + rate_smoothing_en + atrial_amplitude_en + atrial_pulse_width_en + atrial_sensitivity_en + arp_en + pvarp_en + maximum_sensor_rate_en + activity_thres_en + reaction_time_en + response_factor_en + recovery_time_en
-#print(Signal_set)
 
-# print (struct.unpack(Signal_echo))
+# print(Signal_set,"\n")
+# print(Signal_echo,"\n")
+
 # with serial.Serial(frdm_port, 115200) as pacemaker:
 #     pacemaker.write(Signal_set)
 
 # with serial.Serial(frdm_port, 115200) as pacemaker:
 #     pacemaker.write(Signal_echo)
-#     data = pacemaker.read(9)
-#     red_rev = data[0]
-#     green_rev = data[1]
-#     blue_rev = data[2]
-#     off_rev =  struct.unpack("f", data[3:7])[0]
-#     switch_rev =  struct.unpack("H", data[7:9])[0]
+#     data = pacemaker.read(41)
+    # red_rev = data[0]
+    # green_rev = data[1]
+    # blue_rev = data[2]
+    # off_rev =  struct.unpack("f", data[3:7])[0]
+    # switch_rev =  struct.unpack("H", data[7:9])[0]
 
 # print("From the board:")
 # print("red_en = ", red_rev)
