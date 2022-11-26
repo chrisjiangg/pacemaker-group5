@@ -15,25 +15,25 @@ frdm_port = "COM3"
 # Text file data converted to integer data type
 
 array =[]
-Data = np.genfromtxt("data.txt",encoding=None, delimiter=",")
+Data = np.genfromtxt("data.txt",encoding=None)
 for each in Data:
     array.append(each)
 
 mode = array[0]
 lower_rate_limit = array[1]
 upper_rate_limit =array[2]
-ventrical_amp = array[3]
-ventrical_pulse_width = array[4]
-ventrical_sensitivity = array[5]
-vrp = array[6]
-hyster = array[7]
-rate_smoothing = array[8]
-atrial_amplitude = array[9]
-atrial_pulse_width = array[10]
-atrial_sensitivity = array[11]
-arp = array[12]
-pvarp = array[13]
-maximum_sensor_rate = array[14]
+maximum_sensor_rate = array[3]
+atrial_amplitude = array[4]
+atrial_pulse_width = array[5]
+atrial_sensitivity = array[6]
+ventrical_amp = array[7]
+ventrical_pulse_width = array[8]
+ventrical_sensitivity = array[9]
+arp = array[10]
+vrp = array[11]
+pvarp = array[12]
+hyster = array[13]
+rate_smoothing = array[14]
 activity_thres = array[15]
 reaction_time = array[16]
 response_factor = array[17]
@@ -62,28 +62,28 @@ reaction_time_en = struct.pack("B", int(reaction_time))
 response_factor_en = struct.pack("B", int(response_factor))
 recovery_time_en = struct.pack("B", int(recovery_time))
 
-# print("Start: ", Start)
-# print("SYNC: ", SYNC)
-# print("Fn_set: ", Fn_set)
-# print("mode_en: ", mode_en)
-# print("lower_rate_limit_en: ", lower_rate_limit_en)
-# print("upper_rate_limit_en: ", upper_rate_limit_en)
-# print("ventrical_amp_en: ", ventrical_amp_en)
-# print("ventrical_pulse_width_en: ", ventrical_pulse_width_en)
-# print("ventrical_sensitivity_en: ", ventrical_sensitivity_en)
-# print("vrp_en: ", vrp_en)
-# print("hyster_en: ", hyster_en)
-# print("rate_smoothing_en: ", rate_smoothing_en)
-# print("atrial_amplitude_en: ", atrial_amplitude_en)
-# print("atrial_pulse_width_en: ", atrial_pulse_width_en)
-# print("atrial_sensitivity_en: ", atrial_sensitivity_en)
-# print("arp_en: ", arp_en)
-# print("pvarp_en: ", pvarp_en)
-# print("maximum_sensor_rate_en: ", maximum_sensor_rate_en)
-# print("activity_thres_en: ", activity_thres_en)
-# print("reaction_time_en: ", reaction_time_en)
-# print("response_factor_en: ", response_factor_en)
-# print("recovery_time_en: ", recovery_time_en)
+print("Start: ", Start)
+print("SYNC: ", SYNC)
+print("Fn_set: ", Fn_set)
+print("mode_en: ", mode_en)
+print("lower_rate_limit_en: ", lower_rate_limit_en)
+print("upper_rate_limit_en: ", upper_rate_limit_en)
+print("maximum_sensor_rate_en: ", maximum_sensor_rate_en)
+print("atrial_amplitude_en: ", atrial_amplitude_en)
+print("atrial_pulse_width_en: ", atrial_pulse_width_en)
+print("atrial_sensitivity_en: ", atrial_sensitivity_en)
+print("ventrical_amp_en: ", ventrical_amp_en)
+print("ventrical_pulse_width_en: ", ventrical_pulse_width_en)
+print("ventrical_sensitivity_en: ", ventrical_sensitivity_en)
+print("arp_en: ", arp_en)
+print("vrp_en: ", vrp_en)
+print("pvarp_en: ", pvarp_en)
+print("hyster_en: ", hyster_en)
+print("rate_smoothing_en: ", rate_smoothing_en)
+print("activity_thres_en: ", activity_thres_en)
+print("reaction_time_en: ", reaction_time_en)
+print("response_factor_en: ", response_factor_en)
+print("recovery_time_en: ", recovery_time_en)
 
 mode_de = struct.unpack("B", mode_en)
 lower_rate_limit_de = struct.unpack("B", lower_rate_limit_en)
@@ -105,25 +105,25 @@ reaction_time_de = struct.unpack("B", reaction_time_en)
 response_factor_de = struct.unpack("B", response_factor_en)
 recovery_time_de = struct.unpack("B", recovery_time_en)
 
-print("mode_en: ", mode_de)
-print("lower_rate_limit_en: ", lower_rate_limit_de)
-print("upper_rate_limit_en: ", upper_rate_limit_de)
-print("ventrical_amp_en: ", ventrical_amp_de)
-print("ventrical_pulse_width_en: ", ventrical_pulse_width_de)
-print("ventrical_sensitivity_en: ", ventrical_sensitivity_de)
-print("vrp_en: ", vrp_de)
-print("hyster_en: ", hyster_de)
-print("rate_smoothing_en: ", rate_smoothing_de)
-print("atrial_amplitude_en: ", atrial_amplitude_de)
-print("atrial_pulse_width_en: ", atrial_pulse_width_de)
-print("atrial_sensitivity_en: ", atrial_sensitivity_de)
-print("arp_en: ", arp_de)
-print("pvarp_en: ", pvarp_de)
-print("maximum_sensor_rate_en: ", maximum_sensor_rate_de)
-print("activity_thres_en: ", activity_thres_de)
-print("reaction_time_en: ", reaction_time_de)
-print("response_factor_en: ", response_factor_de)
-print("recovery_time_en: ", recovery_time_de)
+print("mode_en: ", mode_de[0])
+print("lower_rate_limit_en: ", lower_rate_limit_de[0])
+print("upper_rate_limit_en: ", upper_rate_limit_de[0])
+print("maximum_sensor_rate_en: ", maximum_sensor_rate_de[0])
+print("atrial_amplitude_en: ", atrial_amplitude_de[0])
+print("atrial_pulse_width_en: ", atrial_pulse_width_de[0])
+print("atrial_sensitivity_en: ", atrial_sensitivity_de[0])
+print("ventrical_amp_en: ", ventrical_amp_de[0])
+print("ventrical_pulse_width_en: ", ventrical_pulse_width_de[0])
+print("ventrical_sensitivity_en: ", ventrical_sensitivity_de[0])
+print("arp_en: ", arp_de[0])
+print("vrp_en: ", vrp_de[0])
+print("pvarp_en: ", pvarp_de[0])
+print("hyster_en: ", hyster_de[0])
+print("rate_smoothing_en: ", rate_smoothing_de[0])
+print("activity_thres_en: ", activity_thres_de[0])
+print("reaction_time_en: ", reaction_time_de[0])
+print("response_factor_en: ", response_factor_de[0])
+print("recovery_time_en: ", recovery_time_de[0])
 
 Signal_set = Start + Fn_set + mode_en + lower_rate_limit_en + upper_rate_limit_en + ventrical_amp_en + ventrical_pulse_width_en + ventrical_sensitivity_en  + vrp_en + hyster_en + rate_smoothing_en + atrial_amplitude_en + atrial_pulse_width_en + atrial_sensitivity_en + arp_en + pvarp_en + maximum_sensor_rate_en + activity_thres_en + reaction_time_en + response_factor_en + recovery_time_en
 Signal_echo = Start + SYNC + mode_en + lower_rate_limit_en + upper_rate_limit_en + ventrical_amp_en + ventrical_pulse_width_en + ventrical_sensitivity_en  + vrp_en + hyster_en + rate_smoothing_en + atrial_amplitude_en + atrial_pulse_width_en + atrial_sensitivity_en + arp_en + pvarp_en + maximum_sensor_rate_en + activity_thres_en + reaction_time_en + response_factor_en + recovery_time_en

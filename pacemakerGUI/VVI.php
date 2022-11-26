@@ -73,24 +73,24 @@ session_start();
             Lower Rate Limit (ppm): <input type="range" name="lower_rate_limit" placeholder="Lower Rate Limit" min = "30" max = "175" step= "1" value="30" oninput="rangeValue.innerText = this.value" required>
             <br>
             <p id="rangeValue">30</p>  
-            Upper Rate Limit (ppm): <input type="range" name="upper_rate_limit" placeholder="Upper Rate Limit" min = "50" max = "175" step= "5" value="50" oninput="rangeValue1.innerText = this.value" required>
+            Upper Rate Limit (ppm): <input type="range" name="upper_rate_limit" placeholder="Upper Rate Limit" min = "50" max = "175" step= "1" value="50" oninput="rangeValue1.innerText = this.value" required>
             <br>
             <p id="rangeValue1">50</p>  
-            Ventricular Amplitude (V): <input type="range" name="ventricular_amplitude" placeholder="Ventricular Amplitude" min= "0.1" max = "5" step= "0.1" value="0" oninput="rangeValue2.innerText = this.value" required>
+            Ventricular Amplitude (V): <input type="range" name="ventricular_amplitude" placeholder="Ventricular Amplitude" min= "0" max = "5" step= "0.1" value="0" oninput="rangeValue2.innerText = this.value" required>
             <br>
             <p id="rangeValue2">0</p>  
-            Ventricular Pulse Width (ms): <input type="range" name="ventricular_pulse_width" placeholder="Ventricular Pulse Width" min= "1" max = "30" step= "1" value="0.05" oninput="rangeValue3.innerText = this.value" required>
+            Ventricular Pulse Width (ms): <input type="range" name="ventricular_pulse_width" placeholder="Ventricular Pulse Width" min= "1" max = "30" step= "1" value="1" oninput="rangeValue3.innerText = this.value" required>
             <br>
-            <p id="rangeValue3">0.05</p>
-            Ventricular Sensitivity (mV): <input type="range" name="ventricular_sensitivity" placeholder="Ventricular Sensitivity" min="0" max="5" list="sizes" value="0.25" step="0.1" oninput="rangeValue4.innerText=this.value" required>
+            <p id="rangeValue3">1</p>
+            Ventricular Sensitivity (V): <input type="range" name="ventricular_sensitivity" placeholder="Ventricular Sensitivity" min="0" max="5" value="0" step="0.1" oninput="rangeValue4.innerText=this.value" required>
             <br>
-            <p id="rangeValue4">0.25</p>
-            VRP (ms): <input type="range" name="vrp" placeholder="VRP" min= "150" max = "500" step= "10" value="150" oninput="rangeValue5.innerText = this.value" required>
+            <p id="rangeValue4">0</p>
+            VRP (ms): <input type="range" name="vrp" placeholder="VRP" min= "150" max = "500" step= "1" value="150" oninput="rangeValue5.innerText = this.value" required>
             <br>
             <p id="rangeValue5">150</p>
-            Hysteresis (ppm): <input type="range" name="hysteresis" placeholder="Hysteresis" min = "30" max = "175" step= "1" value="0" oninput="rangeValue7.innerText = this.value" required>
+            Hysteresis (ppm): <input type="range" name="hysteresis" placeholder="Hysteresis" min = "30" max = "175" step= "1" value="30" oninput="rangeValue7.innerText = this.value" required>
             <br>
-            <p id="rangeValue7">0</p>
+            <p id="rangeValue7">30</p>
             Rate Smoothing (%): <input type="range" name="rate_smoothing" placeholder= "Rate Smoothing" min="0" max="25" step="1" value="0" oninput="rangeValue8.innerText = this.value" required>
             <br>
             <p id="rangeValue8">0</p>
