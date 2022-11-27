@@ -76,7 +76,7 @@ session_start();
             Lower Rate Limit (ppm): <input type="range" name="lower_rate_limit" placeholder="Lower Rate Limit" min = "30" max = "175" step= "1" value="30" oninput="rangeValue.innerText = this.value" required>
             <br>
             <p id="rangeValue">30</p>  
-            Upper Rate Limit (ppm): <input type="range" name="upper_rate_limit" placeholder="Upper Rate Limit" min = "50" max = "175" step= "5" value="50" oninput="rangeValue1.innerText = this.value" required>
+            Upper Rate Limit (ppm): <input type="range" name="upper_rate_limit" placeholder="Upper Rate Limit" min = "50" max = "175" step= "1" value="50" oninput="rangeValue1.innerText = this.value" required>
             <br>
             <p id="rangeValue1">50</p>
             Maximum Sensor Rate (ppm): <input type="range" name="maximum_sensor_rate" placeholder= "Maximum Sensing Rate" min="50" max="175" step="1" value="50" oninput="rangeValue9.innerText = this.value" required>
