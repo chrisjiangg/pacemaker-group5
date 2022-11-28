@@ -121,7 +121,7 @@ session_start();
         $recovery_time = $_POST["recovery_time"];
         $serial = $_SESSION["serial"];
         $zero = 0;
-        $mode = 4;
+        $mode = 6;
 
         if($upper_rate_limit>$lower_rate_limit){
         

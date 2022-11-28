@@ -82,7 +82,7 @@ session_start();
         $ventricular_pulse_width = $_POST["ventricular_pulse_width"];
         $serial = $_SESSION["serial"];
         $zero = 0;
-        $mode = 3;
+        $mode = 2;
 
         if ($upper_rate_limit> $lower_rate_limit){
         $query = "UPDATE users SET lower_rate_limit='$lower_rate_limit', upper_rate_limit='$upper_rate_limit', mode='$mode', atrial_amplitude='$zero', atrial_pulse_width='$zero', atrial_sensitivity='$zero', ventrical_amplitude='$ventricular_amplitude', ventrical_pulse_width='$ventricular_pulse_width', ventrical_sensitivity='$zero', arp='$zero', vrp='$zero', pvarp='$zero', hysteresis='$zero', rate_smoothing='$zero' WHERE Serial_number='$serial'";

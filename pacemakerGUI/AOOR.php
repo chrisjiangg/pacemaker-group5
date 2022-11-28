@@ -118,7 +118,7 @@ session_start();
         $recovery_time = $_POST["recovery_time"];
         $serial = $_SESSION["serial"];
         $zero = 0;
-        $mode = 2;
+        $mode = 5;
         
         if ($lower_rate_limit < $upper_rate_limit){
         $query = "UPDATE users SET lower_rate_limit='$lower_rate_limit', upper_rate_limit='$upper_rate_limit', maximum_sensor_rate='$maximum_sensor_rate', mode='$mode', atrial_amplitude='$atrial_amplitude', atrial_pulse_width='$atrial_pulse_width', atrial_sensitivity='$zero', ventrical_amplitude='$zero', ventrical_pulse_width='$zero', ventrical_sensitivity='$zero', arp='$zero', vrp='$zero', pvarp='$zero', hysteresis='$zero', rate_smoothing='$zero', activity_threshold='$activity_threshold', reaction_time='$reaction_time', response_factor='$response_factor', recovery_time='$recovery_time' WHERE Serial_number='$serial'";
