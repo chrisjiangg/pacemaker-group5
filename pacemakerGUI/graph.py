@@ -25,5 +25,7 @@ def animate(i):
     ax1.clear()
     ax1.plot(xs, ys)
 
+  
+
 ani = animation.FuncAnimation(figure, animate, interval=1000)
 mpld3.show()

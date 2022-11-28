@@ -73,6 +73,7 @@ session_start();
             <br>
             <br>
         </form>
+    
     <h2>Changed Parameters</h2>
     <?php
     if($_SERVER['REQUEST_METHOD'] == "POST"){
@@ -114,6 +115,9 @@ session_start();
     }
 
     ?>
+    <br>
+    <a href="graph.php" target = "_blank"><button>Show graph</button></a>
+    <br>
     <br>
     <a href="index2.php"><button>Go Back</button></a>
     <br>
