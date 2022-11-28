@@ -95,7 +95,7 @@ session_start();
        $output = shell_exec($command);
        echo $output;
        //-----------------END----------------------------------------------------
-        //printing out values to the screen
+       //printing out values to the screen
         echo "Mode (AOO): " . $mode;
         echo "<br>";
         echo "Lower Rate Limit: " . $lower_rate_limit;
@@ -112,6 +112,7 @@ session_start();
             echo '<script>alert("lower limit can not exceed upper limit!")</script>'; 
         }
     }
+
     ?>
     <br>
     <a href="index2.php"><button>Go Back</button></a>
