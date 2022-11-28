@@ -112,7 +112,7 @@ session_start();
         $rate_smoothing = $_POST["rate_smoothing"];
         $serial = $_SESSION["serial"];
         $zero = 0;
-        $mode = 7;
+        $mode = 4;
 
         if($upper_rate_limit>$lower_rate_limit){
         
@@ -129,6 +129,7 @@ session_start();
 
         //printing out values to the screen
         echo "Mode (VVI): " . $mode;
+        echo "<br>";
         echo "Lower Rate Limit: " . $lower_rate_limit;
         echo "<br>";
         echo "Upper Rate Limit: " . $upper_rate_limit;

@@ -28,4 +28,4 @@ def animate(i):
   
 
 ani = animation.FuncAnimation(figure, animate, interval=1000)
-mpld3.show()
+plt.show()
