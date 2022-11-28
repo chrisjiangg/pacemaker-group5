@@ -88,48 +88,48 @@ session_start();
     <h2>Change Parameters</h2>
         <!-- sliders -->
         <form method="post">
-            Lower Rate Limit (ppm): <input type="range" name="lower_rate_limit" placeholder="Lower Rate Limit" min = "30" max = "175" step= "1" value="30" oninput="rangeValue.innerText = this.value" required>
+            Lower Rate Limit (ppm): <input type="range" name="lower_rate_limit" placeholder="Lower Rate Limit" min = "30" max = "175" step= "1" value="<?php echo $lower_rate_limit?>" oninput="rangeValue.innerText = this.value" required>
             <br>
-            <p id="rangeValue">30</p>  
-            Upper Rate Limit (ppm): <input type="range" name="upper_rate_limit" placeholder="Upper Rate Limit" min = "50" max = "175" step= "1" value="50" oninput="rangeValue1.innerText = this.value" required>
+            <p id="rangeValue"><?php echo $lower_rate_limit?></p>  
+            Upper Rate Limit (ppm): <input type="range" name="upper_rate_limit" placeholder="Upper Rate Limit" min = "50" max = "175" step= "1" value="<?php echo $upper_rate_limit?>" oninput="rangeValue1.innerText = this.value" required>
             <br>
-            <p id="rangeValue1">50</p> 
-            Maximum Sensor Rate (ppm): <input type="range" name="maximum_sensor_rate" placeholder="Maximum Sensor Rate" min = "50" max = "175" step= "1" value="50" oninput="rangeValue2.innerText = this.value" required>
+            <p id="rangeValue1"><?php echo $upper_rate_limit?></p> 
+            Maximum Sensor Rate (ppm): <input type="range" name="maximum_sensor_rate" placeholder="Maximum Sensor Rate" min = "50" max = "175" step= "1" value="<?php echo $maximum_sensor_rate?>" oninput="rangeValue2.innerText = this.value" required>
             <br>
-            <p id="rangeValue2">50</p> 
-            Atrial Amplitude (V): <input type="range" name="atrial_amplitude" placeholder="Atrial Amplitude" min= "0" max = "5" step= "0.1" value="0" oninput="rangeValue3.innerText = this.value" required>
+            <p id="rangeValue2"><?php echo $maximum_sensor_rate?></p> 
+            Atrial Amplitude (V): <input type="range" name="atrial_amplitude" placeholder="Atrial Amplitude" min= "0" max = "5" step= "0.1" value="<?php echo $atrial_amplitude?>" oninput="rangeValue3.innerText = this.value" required>
             <br>
-            <p id="rangeValue3">0</p>  
-            Atrial Pulse Width (ms): <input type="range" name="atrial_pulse_width" placeholder="Atrial Pulse Width" min= "1" max = "30" step= "1" value="1" oninput="rangeValue4.innerText = this.value" required>
+            <p id="rangeValue3"><?php echo $atrial_amplitude?></p>  
+            Atrial Pulse Width (ms): <input type="range" name="atrial_pulse_width" placeholder="Atrial Pulse Width" min= "1" max = "30" step= "1" value="<?php echo $atrial_pulse_width?>" oninput="rangeValue4.innerText = this.value" required>
             <br>
-            <p id="rangeValue4">1</p>
-            Atrial Sensitivity (V): <input type="range" name="atrial_sensitivity" placeholder="Atrial Sensitivity" min="0" max="5" value="0" step="0.1" oninput="rangeValue5.innerText=this.value" required>
+            <p id="rangeValue4"><?php echo $atrial_pulse_width?></p>
+            Atrial Sensitivity (V): <input type="range" name="atrial_sensitivity" placeholder="Atrial Sensitivity" min="0" max="5" value="<?php echo $atrial_sensitivity?>" step="0.1" oninput="rangeValue5.innerText=this.value" required>
             <br>
-            <p id="rangeValue5">0</p>
-            ARP (ms): <input type="range" name="arp" placeholder="ARP" min= "150" max = "500" step= "1" value="150" oninput="rangeValue6.innerText = this.value" required>
+            <p id="rangeValue5"><?php echo $atrial_sensitivity?></p>
+            ARP (ms): <input type="range" name="arp" placeholder="ARP" min= "150" max = "500" step= "1" value="<?php echo $arp?>" oninput="rangeValue6.innerText = this.value" required>
             <br>
-            <p id="rangeValue6">150</p>
-            PVARP (ms): <input type="range" name="pvarp" placeholder="PVARP" min= "150" max = "500" step= "1" value="150" oninput="rangeValue7.innerText = this.value" required>
+            <p id="rangeValue6"><?php echo $arp?></p>
+            PVARP (ms): <input type="range" name="pvarp" placeholder="PVARP" min= "150" max = "500" step= "1" value="<?php echo $pvarp?>" oninput="rangeValue7.innerText = this.value" required>
             <br>
-            <p id="rangeValue7">150</p>
-            Hysteresis (ppm): <input type="range" name="hysteresis" placeholder="Hysteresis" min = "0" max = "175" step= "1" value="0" oninput="rangeValue8.innerText = this.value" required>
+            <p id="rangeValue7"><?php echo $pvarp?></p>
+            Hysteresis (ppm): <input type="range" name="hysteresis" placeholder="Hysteresis" min = "0" max = "175" step= "1" value="<?php echo $hysteresis?>" oninput="rangeValue8.innerText = this.value" required>
             <br>
-            <p id="rangeValue8">0</p>
-            Rate Smoothing (%): <input type="range" name="rate_smoothing" placeholder= "Rate Smoothing" min="0" max="25" step="1" value="0" oninput="rangeValue9.innerText = this.value" required>
+            <p id="rangeValue8"><?php echo $hysteresis?></p>
+            Rate Smoothing (%): <input type="range" name="rate_smoothing" placeholder= "Rate Smoothing" min="0" max="25" step="1" value="<?php echo $rate_smoothing?>" oninput="rangeValue9.innerText = this.value" required>
             <br>
-            <p id="rangeValue9">0</p>
-            Activity Threshold (V-Low=1, Low=2, Med-Low=3, Med=4, Med-High=5, High=6, V-High=7): <input type="range" name="activity_threshold" placeholder= "Activity Threshold" min="1" max="7" step="1" value="1" oninput="rangeValue10.innerText = this.value" required>
+            <p id="rangeValue9"><?php echo $rate_smoothing?></p>
+            Activity Threshold (V-Low=1, Low=2, Med-Low=3, Med=4, Med-High=5, High=6, V-High=7): <input type="range" name="activity_threshold" placeholder= "Activity Threshold" min="1" max="7" step="1" value="<?php echo $activity_threshold?>" oninput="rangeValue10.innerText = this.value" required>
             <br>
-            <p id="rangeValue10">1</p>
-            Reaction Time (sec): <input type="range" name="reaction_time" placeholder= "Reaction Time" min="10" max="50" step="1" value="10" oninput="rangeValue11.innerText = this.value" required>
+            <p id="rangeValue10"><?php echo $activity_threshold?></p>
+            Reaction Time (sec): <input type="range" name="reaction_time" placeholder= "Reaction Time" min="10" max="50" step="1" value="<?php echo $reaction_time?>" oninput="rangeValue11.innerText = this.value" required>
             <br>
-            <p id="rangeValue11">10</p>
-            Response Factor: <input type="range" name="response_factor" placeholder= "Response Factor" min="1" max="16" step="1" value="1" oninput="rangeValue12.innerText = this.value" required>
+            <p id="rangeValue11"><?php echo $reaction_time?></p>
+            Response Factor: <input type="range" name="response_factor" placeholder= "Response Factor" min="1" max="16" step="1" value="<?php echo $response_factor?>" oninput="rangeValue12.innerText = this.value" required>
             <br>
-            <p id="rangeValue12">1</p>
-            Recovery Time (min): <input type="range" name="recovery_time" placeholder= "Recovery Time" min="2" max="16" step="1" value="2" oninput="rangeValue13.innerText = this.value" required>
+            <p id="rangeValue12"><?php echo $response_factor?></p>
+            Recovery Time (min): <input type="range" name="recovery_time" placeholder= "Recovery Time" min="2" max="16" step="1" value="<?php echo $recovery_time?>" oninput="rangeValue13.innerText = this.value" required>
             <br>
-            <p id="rangeValue13">2</p>
+            <p id="rangeValue13"><?php echo $recovery_time?></p>
             <input type="submit">
             <br>
             <br>
@@ -204,6 +204,9 @@ session_start();
         else{echo '<script>alert("lower limit can not exceed upper limit!")</script>';}
     }
     ?>
+    <br>
+    <a href="graph.php" target = "_blank"><button>Show graph</button></a>
+    <br>
     <br>
     <a href="index2.php"><button>Go Back</button></a>
     <br>

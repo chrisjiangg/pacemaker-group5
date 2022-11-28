@@ -56,18 +56,18 @@ session_start();
     <br>
     <h2>Change Parameters</h2>
         <form method="post">
-            Lower Rate Limit (ppm): <input type="range" name="lower_rate_limit" placeholder="Lower Rate Limit" min = "30" max = "175" step= "1" value="30" oninput="rangeValue.innerText = this.value" required>
+            Lower Rate Limit (ppm): <input type="range" name="lower_rate_limit" placeholder="Lower Rate Limit" min = "30" max = "175" step= "1" value="<?php echo $lower_rate_limit?>" oninput="rangeValue.innerText = this.value" required>
             <br>
-            <p id="rangeValue">30</p>  
-            Upper Rate Limit (ppm): <input type="range" name="upper_rate_limit" placeholder="Upper Rate Limit" min = "50" max = "175" step= "1" value="50" oninput="rangeValue1.innerText = this.value" required>
+            <p id="rangeValue"><?php echo $lower_rate_limit?></p>  
+            Upper Rate Limit (ppm): <input type="range" name="upper_rate_limit" placeholder="Upper Rate Limit" min = "50" max = "175" step= "1" value="<?php echo $upper_rate_limit?>" oninput="rangeValue1.innerText = this.value" required>
             <br>
-            <p id="rangeValue1">50</p>  
-            Ventricular Amplitude (V): <input type="range" name="ventricular_amplitude" placeholder="Ventricular Amplitude" min= "0" max = "5" step= "0.1" value="0" oninput="rangeValue4.innerText = this.value" required>
+            <p id="rangeValue1"><?php echo $upper_rate_limit?></p>  
+            Ventricular Amplitude (V): <input type="range" name="ventricular_amplitude" placeholder="Ventricular Amplitude" min= "0" max = "5" step= "0.1" value="<?php echo $ventricular_amplitude?>" oninput="rangeValue4.innerText = this.value" required>
             <br>
-            <p id="rangeValue4">0</p> 
-            Ventricular Pulse Width (ms): <input type="range" name="ventricular_pulse_width" placeholder="Ventricular Pulse Width" min= "1" max = "30" step= "1" value="1" oninput="rangeValue5.innerText = this.value" required>
+            <p id="rangeValue4"><?php echo $ventricular_amplitude?></p> 
+            Ventricular Pulse Width (ms): <input type="range" name="ventricular_pulse_width" placeholder="Ventricular Pulse Width" min= "1" max = "30" step= "1" value="<?php echo $ventricular_pulse_width?>" oninput="rangeValue5.innerText = this.value" required>
             <br>
-            <p id="rangeValue5">1</p>
+            <p id="rangeValue5"><?php echo $ventricular_pulse_width?></p>
             <input type="submit">
             <br>
             <br>
@@ -115,6 +115,9 @@ session_start();
        
     }
     ?>
+    <br>
+    <a href="graph.php" target = "_blank"><button>Show graph</button></a>
+    <br>
     <br>
     <a href="index2.php"><button>Go Back</button></a>
     <br>
