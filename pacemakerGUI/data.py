@@ -143,8 +143,8 @@ with serial.Serial("COM5", 115200) as pacemaker:
     reaction_time_de = data[49]
     response_factor_de = data[50]
     recovery_time_de = data[51]
-    # atr_signal_de = struct.unpack("d", data[52:60])[0]
-    # vent_signal_de = struct.unpack("d", data[60:68])[0]
+    atr_signal_de = struct.unpack("d", data[52:60])[0]
+    vent_signal_de = struct.unpack("d", data[60:68])[0]
     print("From the board:")
     print("\n")
     print("mode_en: ", mode_de)
@@ -185,9 +185,13 @@ with serial.Serial("COM5", 115200) as pacemaker:
     print("\n")
     print("recovery_time_en: ", recovery_time_de)
     print("\n")
-    # while(1):
-    #     print("atrial_signal: ", atr_signal_de)
-    #     print("\n")
-    #     print("ventrical_signal: ", vent_signal_de)
-    #     print("\n")
-
+    i=0
+    while(1):
+        print("atrial_signal: ", atr_signal_de)
+        print("\n")
+        print("ventrical_signal: ", vent_signal_de)
+        print("\n")
+        i=i+1
+        if(i==100):
+            break
+    print("Done")
