@@ -117,7 +117,10 @@ session_start();
 
     ?>
     <br>
-    <a href="graph.php" target = "_blank"><button>Show graph</button></a>
+    <a href="graph2.php" target = "_blank"><button>Show graph 2</button></a>
+    <br>
+    <br>
+    <a href="graph.php" target = "_blank"><button>Show graph 1</button></a>
     <br>
     <br>
     <a href="index2.php"><button>Go Back</button></a>
