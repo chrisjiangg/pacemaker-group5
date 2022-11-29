@@ -73,35 +73,35 @@ session_start();
     <h2>Change Parameters</h2>
         <!-- sliders -->
         <form method="post">
-            Lower Rate Limit (ppm): <input type="range" name="lower_rate_limit" placeholder="Lower Rate Limit" min = "30" max = "175" step= "1" value="<?php echo $lower_rate_limit?>" oninput="rangeValue.innerText = this.value" required>
+            Lower Rate Limit (ppm): <input type="range" name="lower_rate_limit" placeholder="Lower Rate Limit" min = "30" max = "175" step= "1" value="30" oninput="rangeValue.innerText = this.value" required>
             <br>
-            <p id="rangeValue"><?php echo $lower_rate_limit?></p>  
-            Upper Rate Limit (ppm): <input type="range" name="upper_rate_limit" placeholder="Upper Rate Limit" min = "50" max = "175" step= "1" value="<?php echo $upper_rate_limit?>" oninput="rangeValue1.innerText = this.value" required>
+            <p id="rangeValue">30</p>  
+            Upper Rate Limit (ppm): <input type="range" name="upper_rate_limit" placeholder="Upper Rate Limit" min = "50" max = "175" step= "1" value="50" oninput="rangeValue1.innerText = this.value" required>
             <br>
-            <p id="rangeValue1"><?php echo $upper_rate_limit?></p>
-            Maximum Sensor Rate (ppm): <input type="range" name="maximum_sensor_rate" placeholder= "Maximum Sensing Rate" min="50" max="175" step="1" value="<?php echo $maximum_sensor_rate?>" oninput="rangeValue9.innerText = this.value" required>
+            <p id="rangeValue1">50</p>
+            Maximum Sensor Rate (ppm): <input type="range" name="maximum_sensor_rate" placeholder= "Maximum Sensing Rate" min="50" max="175" step="1" value="50" oninput="rangeValue9.innerText = this.value" required>
             <br>
-            <p id="rangeValue9"><?php echo $maximum_sensor_rate?></p> 
-            Ventricular Amplitude (V): <input type="range" name="ventricular_amplitude" placeholder="Ventricular Amplitude" min= "0" max = "5" step= "0.1" value="<?php echo $ventricular_amplitude?>" oninput="rangeValue2.innerText = this.value" required>
+            <p id="rangeValue9">50</p> 
+            Ventricular Amplitude (V): <input type="range" name="ventricular_amplitude" placeholder="Ventricular Amplitude" min= "0" max = "5" step= "0.1" value="0" oninput="rangeValue2.innerText = this.value" required>
             <br>
-            <p id="rangeValue2"><?php echo $ventricular_amplitude?></p>  
-            Ventricular Pulse Width (ms): <input type="range" name="ventricular_pulse_width" placeholder="Ventricular Pulse Width" min= "1" max = "30" step= "1" value="<?php echo $ventricular_pulse_width?>" oninput="rangeValue8.innerText = this.value" required>
+            <p id="rangeValue2">0</p>  
+            Ventricular Pulse Width (ms): <input type="range" name="ventricular_pulse_width" placeholder="Ventricular Pulse Width" min= "1" max = "30" step= "1" value="1" oninput="rangeValue3.innerText = this.value" required>
             <br>
             <!-- added -->
-            <p id="rangeValue8"><?php echo $ventricular_pulse_width?></p>  
-            Activity Threshold (V-Low=1, Low=2, Med-Low=3, Med=4, Med-High=5, High=6, V-High=7): <input type="range" name="activity_threshold" placeholder= "Activity Threshold" min="1" max="7" step="1" value="<?php echo $activity_threshold?>" oninput="rangeValue10.innerText = this.value" required>
+            <p id="rangeValue8">1</p>  
+            Activity Threshold (V-Low=1, Low=2, Med-Low=3, Med=4, Med-High=5, High=6, V-High=7): <input type="range" name="activity_threshold" placeholder= "Activity Threshold" min="1" max="7" step="1" value="1" oninput="rangeValue10.innerText = this.value" required>
             <br>
-            <p id="rangeValue10"><?php echo $activity_threshold?></p> 
-            Reaction Time (sec): <input type="range" name="reaction_time" placeholder= "Reaction Time" min="10" max="50" step="1" value="<?php echo $reaction_time?>" oninput="rangeValue11.innerText = this.value" required>
+            <p id="rangeValue10">1</p> 
+            Reaction Time (sec): <input type="range" name="reaction_time" placeholder= "Reaction Time" min="10" max="50" step="1" value="10" oninput="rangeValue11.innerText = this.value" required>
             <br>
-            <p id="rangeValue11"><?php echo $reaction_time?></p> 
-            Response Factor: <input type="range" name="response_factor" placeholder= "Response Factor" min="1" max="16" step="1" value="<?php echo $response_factor?>" oninput="rangeValue12.innerText = this.value" required>
+            <p id="rangeValue11">10</p> 
+            Response Factor: <input type="range" name="response_factor" placeholder= "Response Factor" min="1" max="16" step="1" value="1" oninput="rangeValue12.innerText = this.value" required>
             <br>
-            <p id="rangeValue12"><?php echo $response_factor?></p> 
-            Recovery Time (min): <input type="range" name="recovery_time" placeholder= "Recovery Time" min="2" max="16" step="1" value="<?php echo $recovery_time?>" oninput="rangeValue13.innerText = this.value" required>
+            <p id="rangeValue12">1</p> 
+            Recovery Time (min): <input type="range" name="recovery_time" placeholder= "Recovery Time" min="2" max="16" step="1" value="2" oninput="rangeValue13.innerText = this.value" required>
             <br>
             <!-- Done Adding -->
-            <p id="rangeValue13"><?php echo $recovery_time?></p>
+            <p id="rangeValue13">2</p>
             <input type="submit">
             <br>
             <br>
@@ -121,7 +121,7 @@ session_start();
         $recovery_time = $_POST["recovery_time"];
         $serial = $_SESSION["serial"];
         $zero = 0;
-        $mode = 6;
+        $mode = 4;
 
         if($upper_rate_limit>$lower_rate_limit){
         

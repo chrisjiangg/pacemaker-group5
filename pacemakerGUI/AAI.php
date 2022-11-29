@@ -73,33 +73,33 @@ session_start();
     <h2>Change Parameters</h2>
         <!-- sliders -->
         <form method="post">
-            Lower Rate Limit (ppm): <input type="range" name="lower_rate_limit" placeholder="Lower Rate Limit" min = "30" max = "175" step= "1" value="<?php echo $lower_rate_limit?>" oninput="rangeValue.innerText = this.value" required>
+            Lower Rate Limit (ppm): <input type="range" name="lower_rate_limit" placeholder="Lower Rate Limit" min = "30" max = "175" step= "1" value="30" oninput="rangeValue.innerText = this.value" required>
             <br>
-            <p id="rangeValue"><?php echo $lower_rate_limit?></p>  
-            Upper Rate Limit (ppm): <input type="range" name="upper_rate_limit" placeholder="Upper Rate Limit" min = "50" max = "175" step= "1" value="5<?php echo $upper_rate_limit?>" oninput="rangeValue1.innerText = this.value" required>
+            <p id="rangeValue">30</p>  
+            Upper Rate Limit (ppm): <input type="range" name="upper_rate_limit" placeholder="Upper Rate Limit" min = "50" max = "175" step= "1" value="50" oninput="rangeValue1.innerText = this.value" required>
             <br>
-            <p id="rangeValue1"><?php echo $upper_rate_limit?></p>  
-            Atrial Amplitude (V): <input type="range" name="atrial_amplitude" placeholder="Atrial Amplitude" min= "0" max = "5" step= "0.1" value="<?php echo $atrial_amplitude?>" oninput="rangeValue2.innerText = this.value" required>
+            <p id="rangeValue1">50</p>  
+            Atrial Amplitude (V): <input type="range" name="atrial_amplitude" placeholder="Atrial Amplitude" min= "0" max = "5" step= "0.1" value="0" oninput="rangeValue2.innerText = this.value" required>
             <br>
-            <p id="rangeValue2"><?php echo $atrial_amplitude?></p>  
-            Atrial Pulse Width (ms): <input type="range" name="atrial_pulse_width" placeholder="Atrial Pulse Width" min= "1" max = "30" step= "1" value="<?php echo $atrial_pulse_width?>" oninput="rangeValue3.innerText = this.value" required>
+            <p id="rangeValue2">0</p>  
+            Atrial Pulse Width (ms): <input type="range" name="atrial_pulse_width" placeholder="Atrial Pulse Width" min= "1" max = "30" step= "1" value="1" oninput="rangeValue3.innerText = this.value" required>
             <br>
-            <p id="rangeValue3"><?php echo $atrial_pulse_width?></p>
-            Atrial Sensitivity (V): <input type="range" name="atrial_sensitivity" placeholder="Atrial Sensitivity" min="0" max="5" value="<?php echo $atrial_sensitivity?>" step="0.1" oninput="rangeValue4.innerText=this.value" required>
+            <p id="rangeValue3">1</p>
+            Atrial Sensitivity (V): <input type="range" name="atrial_sensitivity" placeholder="Atrial Sensitivity" min="2.6" max="5" value="0" step="0.1" oninput="rangeValue4.innerText=this.value" required>
             <br>
-            <p id="rangeValue4"><?php echo $atrial_sensitivity?></p>
-            ARP (ms): <input type="range" name="arp" placeholder="ARP" min= "150" max = "500" step= "1" value="<?php echo $arp?>" oninput="rangeValue5.innerText = this.value" required>
+            <p id="rangeValue4">2.6</p>
+            ARP (ms): <input type="range" name="arp" placeholder="ARP" min= "150" max = "500" step= "1" value="150" oninput="rangeValue5.innerText = this.value" required>
             <br>
-            <p id="rangeValue5"><?php echo $arp?></p>
-            PVARP (ms): <input type="range" name="pvarp" placeholder="PVARP" min= "150" max = "500" step= "1" value="<?php echo $pvarp?>" oninput="rangeValue6.innerText = this.value" required>
+            <p id="rangeValue5">150</p>
+            PVARP (ms): <input type="range" name="pvarp" placeholder="PVARP" min= "150" max = "500" step= "1" value="150" oninput="rangeValue6.innerText = this.value" required>
             <br>
-            <p id="rangeValue6"><?php echo $pvarp?></p>
-            Hysteresis (ppm): <input type="range" name="hysteresis" placeholder="Hysteresis" min = "0" max = "175" step= "1" value="<?php echo $hysteresis?>" oninput="rangeValue7.innerText = this.value" required>
+            <p id="rangeValue6">150</p>
+            Hysteresis (ppm): <input type="range" name="hysteresis" placeholder="Hysteresis" min = "0" max = "175" step= "1" value="0" oninput="rangeValue7.innerText = this.value" required>
             <br>
-            <p id="rangeValue7"><?php echo $hysteresis?></p>
-            Rate Smoothing (%): <input type="range" name="rate_smoothing" placeholder= "Rate Smoothing" min="0" max="25" step="1" value="<?php echo $rate_smoothing?>" oninput="rangeValue8.innerText = this.value" required>
+            <p id="rangeValue7">0</p>
+            Rate Smoothing (%): <input type="range" name="rate_smoothing" placeholder= "Rate Smoothing" min="0" max="25" step="1" value="0" oninput="rangeValue8.innerText = this.value" required>
             <br>
-            <p id="rangeValue8"><?php echo $rate_smoothing?></p>
+            <p id="rangeValue8">0</p>
             <input type="submit">
             <br>
             <br>
@@ -119,7 +119,7 @@ session_start();
         $rate_smoothing = $_POST["rate_smoothing"];
         $serial = $_SESSION["serial"];
         $zero = 0;
-        $mode = 3;
+        $mode = 5;
 
         if($upper_rate_limit>$lower_rate_limit){
         $query = "UPDATE users SET lower_rate_limit='$lower_rate_limit', upper_rate_limit='$upper_rate_limit', mode='$mode', maximum_sensor_rate='$zero', atrial_amplitude='$atrial_amplitude', atrial_pulse_width='$atrial_pulse_width', atrial_sensitivity='$atrial_sensitivity', ventrical_amplitude='$zero', ventrical_pulse_width='$zero', ventrical_sensitivity='$zero', arp='$arp', vrp='$zero', pvarp='$pvarp', hysteresis='$hysteresis', rate_smoothing='$rate_smoothing', activity_threshold='$zero', reaction_time='$zero', response_factor='$zero', recovery_time='$zero' WHERE Serial_number='$serial'";
