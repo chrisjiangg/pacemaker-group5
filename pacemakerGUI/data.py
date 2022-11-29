@@ -101,8 +101,8 @@ with serial.Serial("COM5", 115200) as pacemaker:
     # response_factor_de = data[50]
     # recovery_time_de = data[51]
     # flag_de = data[52]
-    print("From the board:")
-    print("\n")
+    # print("From the board:")
+    # print("\n")
     # print("mode_en: ", mode_de)
     # print("\n")
     # print("lower_rate_limit_en: ", lower_rate_limit_de)
@@ -143,6 +143,10 @@ with serial.Serial("COM5", 115200) as pacemaker:
     # print("\n")
     i=0
     x=0
+    file_to_delete = open("graphatrium.txt",'w')
+    file_to_delete.close()
+    file_to_delete = open("graphventricle.txt",'w')
+    file_to_delete.close()
     while(1):
         pacemaker.write(signal_echo)
         data = pacemaker.read(16)
@@ -154,15 +158,12 @@ with serial.Serial("COM5", 115200) as pacemaker:
         # print("\n")
         i=i+1
         x=x+1
-        time.sleep(1)
         text = str(x) + ", " + str(atr_signal_de) + "\n"
         text2 = str(x) + ", " + str(vent_signal_de) + "\n"
-        print(text)
         afile = open("graphatrium.txt", "a")
+        bfile = open("graphventricle.txt", "a")
         afile.write(text)
+        bfile.write(text2)
         if(i==1000):
-            afile.close()
             break  
-        
-   
     print("Done")
