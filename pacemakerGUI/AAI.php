@@ -121,7 +121,7 @@ session_start();
         $zero = 0;
         $mode = 5;
 
-        if($upper_rate_limit>$lower_rate_limit && $atrial_sensitivity >=2.6 && (((6000/$lower_rate_limit)-$atrial_pulse_width-$arp)>0)){
+        if($upper_rate_limit>$lower_rate_limit && $atrial_sensitivity >=2.6 && $atrial_sensitivity!=5.0 && (((60000/$lower_rate_limit)-$atrial_pulse_width-$arp)>0)){
         $query = "UPDATE users SET lower_rate_limit='$lower_rate_limit', upper_rate_limit='$upper_rate_limit', mode='$mode', maximum_sensor_rate='$zero', atrial_amplitude='$atrial_amplitude', atrial_pulse_width='$atrial_pulse_width', atrial_sensitivity='$atrial_sensitivity', ventrical_amplitude='$zero', ventrical_pulse_width='$zero', ventrical_sensitivity='$zero', arp='$arp', vrp='$zero', pvarp='$pvarp', hysteresis='$hysteresis', rate_smoothing='$rate_smoothing', activity_threshold='$zero', reaction_time='$zero', response_factor='$zero', recovery_time='$zero' WHERE Serial_number='$serial'";
         mysqli_query($con, $query);
         
@@ -154,7 +154,7 @@ session_start();
         echo "Rate Smoothing: " . $rate_smoothing;
         echo "<br>"; }
 
-        else{echo '<script>alert("lower limit can not exceed upper limit and atrium sensitivity cannot be lower than 2.6!")</script>';}
+        else{echo '<script>alert("USER ENTERED PARAMETERS CAUSE ERRORS!")</script>';}
     }
     ?>
     <br>

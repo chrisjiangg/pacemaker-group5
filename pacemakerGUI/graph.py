@@ -20,7 +20,7 @@ figure.canvas.mpl_connect('button_press_event', onClick)
   
 
 def animate(i):
-    graph_data = open('graph.txt', 'r').read()
+    graph_data = open('graphatrium.txt', 'r').read()
     lines = graph_data.split('\n')
     xs = []
     ys = []
