@@ -82,9 +82,9 @@ session_start();
             Ventricular Pulse Width (ms): <input type="range" name="ventricular_pulse_width" placeholder="Ventricular Pulse Width" min= "1" max = "30" step= "1" value="1" oninput="rangeValue3.innerText = this.value" required>
             <br>
             <p id="rangeValue3">1</p>
-            Ventricular Sensitivity (V): <input type="range" name="ventricular_sensitivity" placeholder="Ventricular Sensitivity" min="2.6" max="5" value="0" step="0.1" oninput="rangeValue4.innerText=this.value" required>
+            Ventricular Sensitivity (V): <input type="range" name="ventricular_sensitivity" placeholder="Ventricular Sensitivity" min="0" max="5" value="0" step="0.1" oninput="rangeValue4.innerText=this.value" required>
             <br>
-            <p id="rangeValue4">2.6</p>
+            <p id="rangeValue4">0</p>
             VRP (ms): <input type="range" name="vrp" placeholder="VRP" min= "150" max = "500" step= "1" value="150" oninput="rangeValue5.innerText = this.value" required>
             <br>
             <p id="rangeValue5">150</p>
@@ -114,7 +114,7 @@ session_start();
         $zero = 0;
         $mode = 7;
 
-        if($upper_rate_limit>$lower_rate_limit){
+        if($upper_rate_limit>$lower_rate_limit && $atrial_sensitivity >=2.6){
         
         $query = "UPDATE users SET lower_rate_limit='$lower_rate_limit', upper_rate_limit='$upper_rate_limit', mode='$mode', atrial_amplitude='$zero', atrial_pulse_width='$zero', atrial_sensitivity='$zero', ventrical_amplitude='$ventricular_amplitude', ventrical_pulse_width='$ventricular_pulse_width', ventrical_sensitivity='$ventricular_sensitivity', arp='$zero', vrp='$vrp', pvarp='$zero', hysteresis='$hysteresis', rate_smoothing='$rate_smoothing' WHERE Serial_number='$serial'";
         
@@ -146,7 +146,7 @@ session_start();
         echo "Rate Smoothing: " . $rate_smoothing;
         echo "<br>";}
 
-        else{echo '<script>alert("lower limit can not exceed upper limit!")</script>'; }
+        else{echo '<script>alert("lower limit can not exceed upper limit and ventrical sensitivity cannot be lower than 2.6!")</script>'; }
     }
     ?>
     <br>
