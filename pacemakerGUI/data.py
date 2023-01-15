@@ -149,9 +149,9 @@ with serial.Serial("COM5", 115200) as pacemaker:
     file_to_delete.close()
     while(1):
         pacemaker.write(signal_echo)
-        data = pacemaker.read(16)
-        atr_signal_de = struct.unpack("d", data[0:8])[0]
-        vent_signal_de = struct.unpack("d", data[8:16])[0]
+        data = pacemaker.read(68)
+        atr_signal_de = struct.unpack("d", data[52:60])[0]
+        vent_signal_de = struct.unpack("d", data[60:68])[0]
         # print("atrial_signal: ", atr_signal_de)
         # print("\n")
         # print("ventrical_signal: ", vent_signal_de)
@@ -164,6 +164,6 @@ with serial.Serial("COM5", 115200) as pacemaker:
         bfile = open("graphventricle.txt", "a")
         afile.write(text)
         bfile.write(text2)
-        if(i==1000):
+        if(i==50):
             break  
     print("Done")

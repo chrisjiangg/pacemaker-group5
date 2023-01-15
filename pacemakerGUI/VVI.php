@@ -129,6 +129,7 @@ session_start();
 
         //printing out values to the screen
         echo "Mode (VVI): " . $mode;
+        echo "<br>";
         echo "Lower Rate Limit: " . $lower_rate_limit;
         echo "<br>";
         echo "Upper Rate Limit: " . $upper_rate_limit;
