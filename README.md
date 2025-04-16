@@ -6,9 +6,7 @@
 ---
 
 ## 📘 **Project Overview**  
-This project simulates the behavior of a dual-chamber pacemaker using a combination of a GUI, backend database, and signal modeling.  
-The system allows users to log in, configure pacemaker parameters, validate those parameters against clinical constraints,  
-and simulate pacemaker activity using a Simulink model.
+This project simulates the behavior of a dual-chamber pacemaker using a combination of a GUI, backend database, and signal modeling. The system allows users to log in, configure pacemaker parameters, validate those parameters against clinical constraints, and simulate pacemaker activity using a Simulink model.
 
 ---
 
