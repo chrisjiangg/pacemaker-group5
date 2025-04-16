@@ -1,13 +1,70 @@
-Welcome to group 5's pacemaker project.
+# **Pacemaker Simulation Project – Group 5**  
+**SFWRENG 3K04**  
+**McMaster University**  
+**Term:** Winter 2023
 
-TO RUN CODE
-1. Download XAMPP (https://www.apachefriends.org/download.html)
-2. Once XAMPP is downloaded open up XAMPP control panel and start Apache and MySQL.
-![image](https://user-images.githubusercontent.com/90339104/197549479-2e963b38-7ed0-42a5-90d6-f5f8f79e8166.png)
-3. Clone the repository to C:\xampp\htdocs or whichever drive you downloaded XAMPP
-4. SQL database where the login/create information is stored (http://localhost/phpmyadmin/index.php?route=/sql&db=login_db&table=users&pos=0)
-5. Create a new database in PHPmyadmin. (if database named different make sure it's changed in the source code)
-![image](https://user-images.githubusercontent.com/90339104/197439613-37347617-3b36-46f1-a1c6-8f455079bfa2.png)
-6. To run the code paste the link into your browser (http://localhost/pacemakerGUI/welcome.php)
+---
 
-If you have any questions or issues running the code you can reach out to this email (jiangc46@mcmaster.ca)
+## 📘 **Project Overview**  
+This project simulates the behavior of a dual-chamber pacemaker using a combination of a GUI, backend database, and signal modeling.  
+The system allows users to log in, configure pacemaker parameters, validate those parameters against clinical constraints,  
+and simulate pacemaker activity using a Simulink model.
+
+---
+
+## 🖥️ **Key Components**
+
+### 🔹 **Pacemaker GUI (PHP + HTML + CSS)**  
+- User authentication: login, register, and session tracking  
+- User-specific pacemaker configuration stored in MySQL  
+- Parameter validation with dynamic input restrictions  
+- Responsive interface for entering and editing pacemaker settings  
+
+### 🔹 **Simulink Model**  
+- Models the behavior of a dual-chamber pacemaker  
+- Takes saved parameter values from the database and simulates pacemaker pulses  
+- Visualizes electrical activity and chamber pacing events  
+- Implements timing constraints and pacing logic per medical requirements  
+
+### 🔹 **Database (MySQL via XAMPP)**  
+- Stores user login credentials securely  
+- Stores validated pacemaker parameters per user  
+- Accessible through `phpMyAdmin` for management and testing  
+
+---
+
+## 🛠️ **Technologies Used**  
+- **Frontend:** HTML, CSS  
+- **Backend:** PHP  
+- **Simulation:** MATLAB Simulink  
+- **Database:** MySQL  
+- **Local Server:** XAMPP (Apache + MySQL)
+
+---
+
+## 🚀 **How to Run the Project**
+
+1. **Install XAMPP**  
+   Download it from [apachefriends.org](https://www.apachefriends.org/download.html)  
+2. **Start XAMPP Control Panel**  
+   Enable both Apache and MySQL services  
+3. **Clone this repository** into your XAMPP `htdocs` folder  
+4. **Launch phpMyAdmin**  
+   Visit [http://localhost/phpmyadmin](http://localhost/phpmyadmin)  
+5. **Create the `login_db` database** and import the required tables  
+   > ⚠️ If you use a different DB name, update the PHP source code accordingly  
+6. **Run the Web Interface**  
+   Open [http://localhost/pacemakerGUI/welcome.php](http://localhost/pacemakerGUI/welcome.php) in your browser  
+7. **Use Simulink**  
+   Open the Simulink model (`.slx`) and run the simulation using the settings pulled from the database  
+
+If you have any questions or run into issues, contact: **jiangc46@mcmaster.ca**
+
+---
+
+## 📚 **Learning Outcomes**
+- Developed a web-based GUI for user input and configuration  
+- Applied real-world constraints to validate pacemaker parameters  
+- Simulated cardiac behavior using MATLAB Simulink  
+- Integrated embedded system simulation with dynamic web technologies  
+- Gained experience working in a multi-language, multi-platform development environment  
